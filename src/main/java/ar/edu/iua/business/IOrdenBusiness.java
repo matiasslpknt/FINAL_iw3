@@ -18,5 +18,5 @@ public interface IOrdenBusiness {
 
     public void delete(Long id) throws BusinessException, NotFoundException;
 
-    public Orden actualizarSurtidor(OrdenSurtidorDTO ordenSurtidorDTO) throws BusinessException, NotFoundException;
+    public Orden actualizarSurtidor(OrdenSurtidorDTO ordenSurtidorDTO) throws BusinessException, NotFoundException, IllegalStateException ;
 }

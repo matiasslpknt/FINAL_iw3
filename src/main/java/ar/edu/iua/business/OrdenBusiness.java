@@ -81,18 +81,23 @@ public class OrdenBusiness implements IOrdenBusiness {
     }
 
     @Override
-    public Orden actualizarSurtidor(OrdenSurtidorDTO ordenSurtidorDTO) throws BusinessException, NotFoundException {
+    public Orden actualizarSurtidor(OrdenSurtidorDTO ordenSurtidorDTO) throws BusinessException, NotFoundException, IllegalStateException {
         Orden orden = null;
         try {
             orden = load(ordenSurtidorDTO.getIdOrden());
+
+            if(orden.getEstado() != 2){
+                throw new IllegalStateException("La orden no se encuentra en estado 2.");
+            }
+
             double capacidad = 0;
 
             for(Cisterna c : orden.getCamion().getCisternaList()){
                 capacidad += c.getCapacidad();
             }
 
-            if(ordenSurtidorDTO.getMasaAcumulada() > capacidad){
-                return null;
+            if(ordenSurtidorDTO.getMasaAcumulada() > capacidad || ordenSurtidorDTO.getMasaAcumulada() > orden.getPreset()){
+                throw new IllegalStateException("No se puede cargar mas combustible, se excede la capacidad o el preset");
             }
 
             DateFormat inputDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");

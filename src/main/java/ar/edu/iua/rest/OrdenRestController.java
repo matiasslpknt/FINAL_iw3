@@ -96,6 +96,8 @@ public class OrdenRestController extends BaseRestController {
             return new ResponseEntity<Orden>(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (NotFoundException e){
             return new ResponseEntity<Orden>(HttpStatus.NOT_FOUND);
+        } catch (IllegalStateException e){
+            return new ResponseEntity<Orden>(HttpStatus.FORBIDDEN);
         }
     }
 }
