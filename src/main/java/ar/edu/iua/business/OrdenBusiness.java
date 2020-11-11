@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,6 +24,7 @@ public class OrdenBusiness implements IOrdenBusiness {
 
     @Autowired
     private OrdenRepository ordenDAO;
+    @Autowired
     private OrdenDetalleBusiness ordenDetalleBusiness;
 
     @Override
@@ -49,7 +51,18 @@ public class OrdenBusiness implements IOrdenBusiness {
 
     @Override
     public Orden save(Orden orden) throws BusinessException {
+
         try {
+            orden.setEstado(1);
+            orden.setCaudal(0);
+            orden.setDensidad(0);
+            Date fechaGen = java.util.Calendar.getInstance().getTime();
+            sssss(fechaGen);
+            orden.setFechaGeneracionOrden(fechaGen);
+            orden.setFechaUltimoAlmacenamiento(null);
+            orden.setMasaAcumulada(0);
+            orden.setNumeroOrden(generarNumeroOrden());
+            orden.setTemperatura(0);
             return ordenDAO.save(orden);
         } catch (Exception e) {
             throw new BusinessException(e);
@@ -95,15 +108,13 @@ public class OrdenBusiness implements IOrdenBusiness {
                 System.out.println(orden.getFechaUltimoAlmacenamiento());
 
                 if ((dateSurtidor.getTime() - orden.getFechaUltimoAlmacenamiento().getTime()) >= 10000) {
-                    //ordenDetalleBusiness.guardar(ordenDetalle);
-                    //ordenDetalleBusiness.save(ordenDetalle);
+                    ordenDetalleBusiness.save(ordenDetalle);
                     ordenDAO.actualizarOrdenSurtidorConFecha(orden.getId(), caudal,densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada(), dateSurtidor);
                 }else{
                     ordenDAO.actualizarOrdenSurtidor(orden.getId(), caudal,densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada());
                 }
             }else{
-                //ordenDetalleBusiness.guardar(ordenDetalle);
-                //ordenDetalleBusiness.save(ordenDetalle);
+                ordenDetalleBusiness.save(ordenDetalle);
                 ordenDAO.actualizarOrdenSurtidorConFecha(orden.getId(), caudal,densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada(), dateSurtidor);
             }
         } catch (Exception e) {
@@ -114,5 +125,38 @@ public class OrdenBusiness implements IOrdenBusiness {
             throw new NotFoundException("No se encontro ningun producto cn el filtro especificado.");
         }
         return orden;
+    }
+
+    private String generarNumeroOrden(){
+        String idUltimaOrdenSt = ordenDAO.getUltimoIdOrden();
+        System.out.println("-------------------------");
+        System.out.println("orden: " + idUltimaOrdenSt);
+        System.out.println("-------------------------");
+        if(idUltimaOrdenSt == null){
+            return "000001";
+        }
+        int idUltimaOrden = Integer.parseInt(idUltimaOrdenSt);
+        int nuevoNumeroOrden = idUltimaOrden+1;
+        String numeroOrden = "";
+        if(nuevoNumeroOrden <= 9){
+            numeroOrden = "00000" + nuevoNumeroOrden;
+        } else if(nuevoNumeroOrden > 9 && nuevoNumeroOrden < 99){
+            numeroOrden = "0000" + nuevoNumeroOrden;
+        } else if(nuevoNumeroOrden > 99 && nuevoNumeroOrden < 999){
+            numeroOrden = "000" + nuevoNumeroOrden;
+        } else if(nuevoNumeroOrden > 999 && nuevoNumeroOrden < 9999){
+            numeroOrden = "00" + nuevoNumeroOrden;
+        } else if(nuevoNumeroOrden > 9999 && nuevoNumeroOrden < 99999){
+            numeroOrden = "0" + nuevoNumeroOrden;
+        } else {
+            numeroOrden = "" + nuevoNumeroOrden;
+        }
+        return numeroOrden;
+    }
+
+    public void sssss(Date d){
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        System.out.println(d.toString());
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 }

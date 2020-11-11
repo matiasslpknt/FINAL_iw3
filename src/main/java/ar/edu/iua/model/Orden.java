@@ -1,16 +1,13 @@
 package ar.edu.iua.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name="orden")
+@Table(name = "orden")
 @SqlResultSetMapping(
-        name="ordensurtidor",
+        name = "ordensurtidor",
         classes = {
                 @ConstructorResult(
                         columns = {
@@ -32,19 +29,19 @@ public class Orden implements Serializable {
 
     private String numeroOrden;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "camion_id")
     private Camion camion;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "producto_id")
     private Producto producto;
 
-    @OneToOne(cascade =  CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Conciliacion conciliacion;
 
 //    @OneToMany(targetEntity = OrdenDetalle.class, mappedBy = "orden", fetch = FetchType.LAZY)
@@ -60,6 +57,14 @@ public class Orden implements Serializable {
     private double caudal;
 
     private Date fechaUltimoAlmacenamiento;
+
+    private double preset;
+
+    private int estado;
+
+    private Date fechaGeneracionOrden;
+
+    private Date fechaPrevistaCarga;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -159,5 +164,37 @@ public class Orden implements Serializable {
 
     public void setFechaUltimoAlmacenamiento(Date fechaUltimoAlmacenamiento) {
         this.fechaUltimoAlmacenamiento = fechaUltimoAlmacenamiento;
+    }
+
+    public double getPreset() {
+        return preset;
+    }
+
+    public void setPreset(double preset) {
+        this.preset = preset;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public Date getFechaGeneracionOrden() {
+        return fechaGeneracionOrden;
+    }
+
+    public void setFechaGeneracionOrden(Date fechaGeneracionOrden) {
+        this.fechaGeneracionOrden = fechaGeneracionOrden;
+    }
+
+    public Date getFechaPrevistaCarga() {
+        return fechaPrevistaCarga;
+    }
+
+    public void setFechaPrevistaCarga(Date fechaPrevistaCarga) {
+        this.fechaPrevistaCarga = fechaPrevistaCarga;
     }
 }

@@ -22,4 +22,7 @@ public interface OrdenRepository extends JpaRepository<Orden, Long> {
     @Transactional
     @Query(value = "UPDATE orden o SET o.caudal = ?2, o.densidad = ?3, o.temperatura = ?4, o.masa_acumulada = ?5 WHERE o.id = ?1", nativeQuery = true)
     void actualizarOrdenSurtidor(long idOrden, double caudal , double densidad, double temperatura, double masaAcumulada);
+
+    @Query(value = "select MAX(id) from orden", nativeQuery = true)
+    String getUltimoIdOrden();
 }
