@@ -2,26 +2,23 @@ package ar.edu.iua.business.exception;
 
 public class FullTankException extends Exception {
 
+    public FullTankException() {
+    }
 
-	private static final long serialVersionUID = 931105484889458525L;
+    public FullTankException(String message) {
+        super(message);
+    }
 
-	public FullTankException() {
-	}
+    public FullTankException(Throwable cause) {
+        super(cause);
+    }
 
-	public FullTankException(String message) {
-		super(message);
-	}
+    public FullTankException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-	public FullTankException(Throwable cause) {
-		super(cause);
-	}
-
-	public FullTankException(String message, Throwable cause) {
-		super(message, cause);
-	}
-
-	public FullTankException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-	}
+    public FullTankException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 
 }

@@ -3,8 +3,6 @@ package ar.edu.iua.business.exception;
 public class PresetLimitException extends Exception {
 
 
-	private static final long serialVersionUID = 931105484889458525L;
-
 	public PresetLimitException() {
 	}
 

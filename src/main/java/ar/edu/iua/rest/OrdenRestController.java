@@ -5,7 +5,6 @@ import ar.edu.iua.business.exception.*;
 import ar.edu.iua.model.Orden;
 import ar.edu.iua.model.OrdenSurtidorDTO;
 import ar.edu.iua.model.PesajeDTO;
-import ar.edu.iua.model.Producto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,15 +93,15 @@ public class OrdenRestController extends BaseRestController {
         } catch (BusinessException e) {
             log.error(e.getMessage(), e);
             return new ResponseEntity<Orden>(HttpStatus.INTERNAL_SERVER_ERROR);
-        } catch (NotFoundException e){
+        } catch (NotFoundException e) {
             return new ResponseEntity<Orden>(HttpStatus.NOT_FOUND);
-        } catch (InvalidStateOrderException e){
+        } catch (InvalidStateOrderException e) {
             return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
-        } catch (InvalidPasswordOrderException e){
+        } catch (InvalidPasswordOrderException e) {
             return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
-        }catch (PresetLimitException e){
+        } catch (PresetLimitException e) {
             return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
-        }catch (FullTankException e){
+        } catch (FullTankException e) {
             return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
         }
     }
@@ -116,9 +115,9 @@ public class OrdenRestController extends BaseRestController {
         } catch (BusinessException e) {
             log.error(e.getMessage(), e);
             return new ResponseEntity<Orden>(HttpStatus.INTERNAL_SERVER_ERROR);
-        } catch (NotFoundException e){
+        } catch (NotFoundException e) {
             return new ResponseEntity<Orden>(HttpStatus.NOT_FOUND);
-        } catch (InvalidStateOrderException e){
+        } catch (InvalidStateOrderException e) {
             return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
         }
     }
