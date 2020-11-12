@@ -13,7 +13,6 @@ import java.security.SecureRandom;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -58,8 +57,8 @@ public class OrdenBusiness implements IOrdenBusiness {
             orden.setEstado(1);
             orden.setCaudal(0);
             orden.setDensidad(0);
-            Instant fGen = java.util.Calendar.getInstance().getTime().toInstant().minus(Duration.ofHours(3));
-            Date fechaGen = Date.from(fGen);
+            orden.setDensidad(0);
+            Date fechaGen = java.util.Calendar.getInstance().getTime();
             orden.setFechaGeneracionOrden(fechaGen);
             orden.setFechaUltimoAlmacenamiento(null);
             orden.setMasaAcumulada(0);
@@ -93,8 +92,8 @@ public class OrdenBusiness implements IOrdenBusiness {
         try {
             String numeroOrden = getNumeroOrden(ordenSurtidorDTO.getIdOrden());
             orden = findByNumeroOrden(numeroOrden);
-            String fechaPrevistaCarga = orden.getFechaPrevistaCarga().toInstant().toString().split("T")[0].trim();
-            String fechaSurtidor = ordenSurtidorDTO.getFecha().toString().split("T")[0].trim();
+            String fechaPrevistaCarga = orden.getFechaPrevistaCarga().toString().split("T")[0].trim();
+            String fechaSurtidor = ordenSurtidorDTO.getFecha().split("T")[0].trim();
             if (!fechaPrevistaCarga.equals(fechaSurtidor)) {
                 throw new OutOfDateException("No es el dia de carga");
             }
@@ -122,21 +121,14 @@ public class OrdenBusiness implements IOrdenBusiness {
 
             DateFormat inputDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
             Date dateSurtidor = inputDF.parse(ordenSurtidorDTO.getFecha());
-            Instant fGen = dateSurtidor.toInstant().minus(Duration.ofHours(6));
-            dateSurtidor = Date.from(fGen);
 
             double caudal = (ordenSurtidorDTO.getMasaAcumulada() - orden.getMasaAcumulada()) / 1;
 
             double densidad = ordenSurtidorDTO.getMasaAcumulada() / capacidad;
 
             OrdenDetalle ordenDetalle = new OrdenDetalle(ordenSurtidorDTO.getMasaAcumulada(), densidad, ordenSurtidorDTO.getTemperatura(), caudal, orden.getId());
-            System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
-            System.out.println(dateSurtidor);
-            System.out.println(orden.getFechaUltimoAlmacenamiento());
-            System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
             if (caudal >= 0 && orden.getMasaAcumulada() < ordenSurtidorDTO.getMasaAcumulada() && ordenSurtidorDTO.getMasaAcumulada() > 0) {
                 if (orden.getFechaUltimoAlmacenamiento() != null) {
-
                     if ((dateSurtidor.getTime() - orden.getFechaUltimoAlmacenamiento().getTime()) >= 10000) {
                         ordenDetalleBusiness.save(ordenDetalle);
                         ordenDAO.actualizarOrdenSurtidorConFecha(orden.getId(), caudal, densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada(), dateSurtidor);
@@ -229,17 +221,11 @@ public class OrdenBusiness implements IOrdenBusiness {
     }
 
     @Override
-    public Orden actualizarPesajeInicial(PesajeDTO pesajeDTO) throws BusinessException, NotFoundException, InvalidStateOrderException, OutOfDateException {
+    public Orden actualizarPesajeInicial(PesajeDTO pesajeDTO) throws BusinessException, NotFoundException, InvalidStateOrderException {
         Orden orden = null;
         try {
             String numeroOrden = getNumeroOrden(pesajeDTO.getIdOrden());
             orden = findByNumeroOrden(numeroOrden);
-
-            String fechaPrevistaCarga = orden.getFechaPrevistaCarga().toInstant().toString().split("T")[0].trim();
-            String fechaSurtidor = pesajeDTO.getFechaPesaje().toString().split("T")[0].trim();
-            if (!fechaPrevistaCarga.equals(fechaSurtidor)) {
-                throw new OutOfDateException("No es el dia de carga");
-            }
 
             if (orden.getEstado() != 1) {
                 throw new InvalidStateOrderException("La orden no se encuentra en estado 1.");
@@ -247,8 +233,6 @@ public class OrdenBusiness implements IOrdenBusiness {
 
             DateFormat inputDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
             Date dateSurtidor = inputDF.parse(pesajeDTO.getFechaPesaje());
-            Instant fGen = dateSurtidor.toInstant().minus(Duration.ofHours(6));
-            dateSurtidor = Date.from(fGen);
             String password = generarRandomPassword(5);
             ordenDAO.actualizarPesajeInicial(numeroOrden, pesajeDTO.getPeso(), dateSurtidor, 2, password);
             orden = load(orden.getId());
@@ -258,9 +242,6 @@ public class OrdenBusiness implements IOrdenBusiness {
         } catch (InvalidStateOrderException e) {
             log.error(e.getMessage(), e);
             throw new InvalidStateOrderException("La orden no se encuentra en estado 1.");
-        } catch (OutOfDateException e) {
-            log.error(e.getMessage(), e);
-            throw new OutOfDateException("La orden no se encuentra en estado 1.");
         }
         if (orden == null) {
             throw new NotFoundException("No se encontro ningun producto cn el filtro especificado.");
