@@ -1,9 +1,6 @@
 package ar.edu.iua.business;
 
-import ar.edu.iua.business.exception.BusinessException;
-import ar.edu.iua.business.exception.InvalidPasswordOrderException;
-import ar.edu.iua.business.exception.InvalidStateOrderException;
-import ar.edu.iua.business.exception.NotFoundException;
+import ar.edu.iua.business.exception.*;
 import ar.edu.iua.model.*;
 import ar.edu.iua.model.persistence.OrdenRepository;
 import org.slf4j.Logger;
@@ -86,12 +83,14 @@ public class OrdenBusiness implements IOrdenBusiness {
     }
 
     @Override
-    public Orden actualizarSurtidor(OrdenSurtidorDTO ordenSurtidorDTO) throws BusinessException, NotFoundException, InvalidStateOrderException, InvalidPasswordOrderException {
+    public Orden actualizarSurtidor(OrdenSurtidorDTO ordenSurtidorDTO) throws BusinessException,
+            NotFoundException, InvalidStateOrderException, InvalidPasswordOrderException,
+            FullTankException, PresetLimitException {
         Orden orden = null;
         try {
             String numeroOrden = getNumeroOrden(ordenSurtidorDTO.getIdOrden());
             orden = findByNumeroOrden(numeroOrden);
-            if(!orden.getPassword().equals(ordenSurtidorDTO.getPassword())){
+            if (!orden.getPassword().equals(ordenSurtidorDTO.getPassword())) {
                 throw new InvalidPasswordOrderException("Password Inválido");
             }
 
@@ -105,8 +104,12 @@ public class OrdenBusiness implements IOrdenBusiness {
                 capacidad += c.getCapacidad();
             }
 
-            if (ordenSurtidorDTO.getMasaAcumulada() > capacidad || ordenSurtidorDTO.getMasaAcumulada() > orden.getPreset()) {
-                throw new InvalidStateOrderException("No se puede cargar mas combustible, se excede la capacidad o el preset");
+            if (ordenSurtidorDTO.getMasaAcumulada() > capacidad) {
+                throw new FullTankException("No se puede cargar mas combustible, se excede la capacidad del camion");
+            }
+
+            if (ordenSurtidorDTO.getMasaAcumulada() > orden.getPreset()) {
+                throw new PresetLimitException("No se puede cargar mas combustible, se excede el preset");
             }
 
             DateFormat inputDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -137,6 +140,12 @@ public class OrdenBusiness implements IOrdenBusiness {
         } catch (InvalidPasswordOrderException e) {
             log.error(e.getMessage(), e);
             throw new InvalidPasswordOrderException("Password Inválido");
+        } catch (FullTankException e) {
+            log.error(e.getMessage(), e);
+            throw new FullTankException("No se puede cargar mas combustible, se excede la capacidad del camion");
+        } catch (PresetLimitException e) {
+            log.error(e.getMessage(), e);
+            throw new PresetLimitException("No se puede cargar mas combustible, se excede el preset");
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             throw new BusinessException(e);

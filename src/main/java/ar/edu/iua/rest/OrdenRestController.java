@@ -1,10 +1,7 @@
 package ar.edu.iua.rest;
 
 import ar.edu.iua.business.IOrdenBusiness;
-import ar.edu.iua.business.exception.BusinessException;
-import ar.edu.iua.business.exception.InvalidPasswordOrderException;
-import ar.edu.iua.business.exception.InvalidStateOrderException;
-import ar.edu.iua.business.exception.NotFoundException;
+import ar.edu.iua.business.exception.*;
 import ar.edu.iua.model.Orden;
 import ar.edu.iua.model.OrdenSurtidorDTO;
 import ar.edu.iua.model.PesajeDTO;
@@ -102,6 +99,10 @@ public class OrdenRestController extends BaseRestController {
         } catch (InvalidStateOrderException e){
             return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
         } catch (InvalidPasswordOrderException e){
+            return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
+        }catch (PresetLimitException e){
+            return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
+        }catch (FullTankException e){
             return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
         }
     }

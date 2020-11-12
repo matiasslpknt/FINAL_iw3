@@ -1,9 +1,6 @@
 package ar.edu.iua.business;
 
-import ar.edu.iua.business.exception.BusinessException;
-import ar.edu.iua.business.exception.InvalidPasswordOrderException;
-import ar.edu.iua.business.exception.InvalidStateOrderException;
-import ar.edu.iua.business.exception.NotFoundException;
+import ar.edu.iua.business.exception.*;
 import ar.edu.iua.model.Orden;
 import ar.edu.iua.model.OrdenSurtidorDTO;
 import ar.edu.iua.model.PesajeDTO;
@@ -21,7 +18,8 @@ public interface IOrdenBusiness {
     public void delete(Long id) throws BusinessException, NotFoundException;
 
     public Orden actualizarSurtidor(OrdenSurtidorDTO ordenSurtidorDTO) throws BusinessException,
-            NotFoundException, InvalidStateOrderException, InvalidPasswordOrderException;
+            NotFoundException, InvalidStateOrderException, InvalidPasswordOrderException,
+            FullTankException, PresetLimitException;
 
     public Orden findByNumeroOrden(String orden) throws BusinessException, NotFoundException;
 
