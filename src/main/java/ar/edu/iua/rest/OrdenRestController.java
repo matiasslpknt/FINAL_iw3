@@ -95,13 +95,8 @@ public class OrdenRestController extends BaseRestController {
             return new ResponseEntity<Orden>(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (NotFoundException e) {
             return new ResponseEntity<Orden>(HttpStatus.NOT_FOUND);
-        } catch (InvalidStateOrderException e) {
-            return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
-        } catch (InvalidPasswordOrderException e) {
-            return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
-        } catch (PresetLimitException e) {
-            return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
-        } catch (FullTankException e) {
+        } catch (InvalidPasswordOrderException | PresetLimitException | FullTankException |
+                OutOfDateException | InvalidStateOrderException e) {
             return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
         }
     }
@@ -117,7 +112,7 @@ public class OrdenRestController extends BaseRestController {
             return new ResponseEntity<Orden>(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (NotFoundException e) {
             return new ResponseEntity<Orden>(HttpStatus.NOT_FOUND);
-        } catch (InvalidStateOrderException e) {
+        } catch (InvalidStateOrderException | OutOfDateException e) {
             return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
         }
     }

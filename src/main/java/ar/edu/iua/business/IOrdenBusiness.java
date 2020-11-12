@@ -19,10 +19,10 @@ public interface IOrdenBusiness {
 
     public Orden actualizarSurtidor(OrdenSurtidorDTO ordenSurtidorDTO) throws BusinessException,
             NotFoundException, InvalidStateOrderException, InvalidPasswordOrderException,
-            FullTankException, PresetLimitException;
+            FullTankException, PresetLimitException, OutOfDateException;
 
     public Orden findByNumeroOrden(String orden) throws BusinessException, NotFoundException;
 
     public Orden actualizarPesajeInicial(PesajeDTO pesajeDTO) throws BusinessException, NotFoundException,
-            InvalidStateOrderException;
+            InvalidStateOrderException, OutOfDateException;
 }
