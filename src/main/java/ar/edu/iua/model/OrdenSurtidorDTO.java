@@ -6,16 +6,17 @@ import java.io.Serializable;
 public class OrdenSurtidorDTO implements Serializable {
 
 
-    private long idOrden;
+    private String idOrden;
     private double temperatura;
     private double masaAcumulada;
     private String fecha;
+    private String password;
 
-    public long getIdOrden() {
+    public String getIdOrden() {
         return idOrden;
     }
 
-    public void setIdOrden(long idOrden) {
+    public void setIdOrden(String idOrden) {
         this.idOrden = idOrden;
     }
 
@@ -43,9 +44,18 @@ public class OrdenSurtidorDTO implements Serializable {
         this.fecha = fecha;
     }
 
-    public OrdenSurtidorDTO(long idOrden, double temperatura, double masaAcumulada) {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public OrdenSurtidorDTO(String idOrden, double temperatura, double masaAcumulada, String password) {
         this.idOrden = idOrden;
         this.temperatura = temperatura;
         this.masaAcumulada = masaAcumulada;
+        this.password = password;
     }
 }

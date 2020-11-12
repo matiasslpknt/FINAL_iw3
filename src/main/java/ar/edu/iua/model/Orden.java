@@ -19,6 +19,18 @@ import java.util.Date;
                 )
         }
 )
+@SqlResultSetMapping(
+        name = "pesaje",
+        classes = {
+                @ConstructorResult(
+                        columns = {
+                                @ColumnResult(name = "p.idOrden", type = String.class),
+                                @ColumnResult(name = "p.pesaje_inicial", type = String.class)
+                        },
+                        targetClass = PesajeDTO.class
+                )
+        }
+)
 public class Orden implements Serializable {
 
     private static final long serialVersionUID = -6842932053341232133L;
@@ -65,6 +77,12 @@ public class Orden implements Serializable {
     private Date fechaGeneracionOrden;
 
     private Date fechaPrevistaCarga;
+
+    private String password;
+
+    private double pesajeInicial;
+
+    private Date fechaPesaje;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -196,5 +214,29 @@ public class Orden implements Serializable {
 
     public void setFechaPrevistaCarga(Date fechaPrevistaCarga) {
         this.fechaPrevistaCarga = fechaPrevistaCarga;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public double getPesajeInicial() {
+        return pesajeInicial;
+    }
+
+    public void setPesajeInicial(double pesajeInicial) {
+        this.pesajeInicial = pesajeInicial;
+    }
+
+    public Date getFechaPesaje() {
+        return fechaPesaje;
+    }
+
+    public void setFechaPesaje(Date fechaPesaje) {
+        this.fechaPesaje = fechaPesaje;
     }
 }
