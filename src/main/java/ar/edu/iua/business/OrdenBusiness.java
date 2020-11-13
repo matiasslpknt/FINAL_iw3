@@ -3,6 +3,7 @@ package ar.edu.iua.business;
 import ar.edu.iua.business.exception.*;
 import ar.edu.iua.model.*;
 import ar.edu.iua.model.persistence.OrdenRepository;
+import ar.edu.iua.rest.Constantes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,9 @@ public class OrdenBusiness implements IOrdenBusiness {
     @Override
     public Orden save(Orden orden) throws BusinessException {
         try {
+            if(orden.getTiempoAlmacenaje() == 0){
+                orden.setTiempoAlmacenaje(Constantes.TIEMPO_ALMACENAJE);
+            }
             orden.setEstado(1);
             orden.setCaudal(0);
             orden.setDensidad(0);
@@ -122,15 +126,18 @@ public class OrdenBusiness implements IOrdenBusiness {
             OrdenDetalle ordenDetalle = new OrdenDetalle(ordenSurtidorDTO.getMasaAcumulada(), densidad, ordenSurtidorDTO.getTemperatura(), caudal, orden.getId(), dateSurtidor);
             if (caudal >= 0 && orden.getMasaAcumulada() < ordenSurtidorDTO.getMasaAcumulada() && ordenSurtidorDTO.getMasaAcumulada() > 0) {
                 if (orden.getFechaUltimoAlmacenamiento() != null) {
-                    if ((dateSurtidor.getTime() - orden.getFechaUltimoAlmacenamiento().getTime()) >= 10000) {
+                    if ((dateSurtidor.getTime() - orden.getFechaUltimoAlmacenamiento().getTime()) >= orden.getTiempoAlmacenaje()) {
                         ordenDetalleBusiness.save(ordenDetalle);
                         ordenDAO.actualizarOrdenSurtidorConFecha(orden.getId(), caudal, densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada(), dateSurtidor);
+                        orden = load(orden.getId());
                     } else {
                         ordenDAO.actualizarOrdenSurtidor(orden.getId(), caudal, densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada());
+                        orden = load(orden.getId());
                     }
                 } else {
                     ordenDetalleBusiness.save(ordenDetalle);
                     ordenDAO.actualizarOrdenSurtidorConFecha(orden.getId(), caudal, densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada(), dateSurtidor);
+                    orden = load(orden.getId());
                 }
             }
         } catch (InvalidStateOrderException e) {
@@ -256,6 +263,7 @@ public class OrdenBusiness implements IOrdenBusiness {
             orden = load(idOrden);
             if(orden.getEstado() == 2){
                 ordenDAO.cerrarOrden(idOrden);
+                orden = load(idOrden);
             }else{
                 throw  new InvalidStateOrderException("La orden debe estar en estado 2.");
             }

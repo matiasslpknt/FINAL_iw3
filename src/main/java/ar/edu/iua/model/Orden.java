@@ -84,6 +84,8 @@ public class Orden implements Serializable {
 
     private Date fechaPesaje;
 
+    private long tiempoAlmacenaje;
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -238,5 +240,13 @@ public class Orden implements Serializable {
 
     public void setFechaPesaje(Date fechaPesaje) {
         this.fechaPesaje = fechaPesaje;
+    }
+
+    public long getTiempoAlmacenaje() {
+        return tiempoAlmacenaje;
+    }
+
+    public void setTiempoAlmacenaje(long tiempoAlmacenaje) {
+        this.tiempoAlmacenaje = tiempoAlmacenaje;
     }
 }
