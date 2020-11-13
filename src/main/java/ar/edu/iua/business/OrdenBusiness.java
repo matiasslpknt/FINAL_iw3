@@ -52,7 +52,6 @@ public class OrdenBusiness implements IOrdenBusiness {
 
     @Override
     public Orden save(Orden orden) throws BusinessException {
-
         try {
             orden.setEstado(1);
             orden.setCaudal(0);
@@ -119,7 +118,7 @@ public class OrdenBusiness implements IOrdenBusiness {
                 throw new PresetLimitException("No se puede cargar mas combustible, se excede el preset");
             }
 
-            DateFormat inputDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            DateFormat inputDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
             Date dateSurtidor = inputDF.parse(ordenSurtidorDTO.getFecha());
 
             double caudal = (ordenSurtidorDTO.getMasaAcumulada() - orden.getMasaAcumulada()) / 1;
@@ -231,12 +230,11 @@ public class OrdenBusiness implements IOrdenBusiness {
                 throw new InvalidStateOrderException("La orden no se encuentra en estado 1.");
             }
 
-            DateFormat inputDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-            Date dateSurtidor = inputDF.parse(pesajeDTO.getFechaPesaje());
+            Date dateSurtidor = java.util.Calendar.getInstance().getTime();
             String password = generarRandomPassword(5);
             ordenDAO.actualizarPesajeInicial(numeroOrden, pesajeDTO.getPeso(), dateSurtidor, 2, password);
             orden = load(orden.getId());
-        } catch (BusinessException | ParseException e) {
+        } catch (BusinessException e) {
             log.error(e.getMessage(), e);
             throw new BusinessException(e);
         } catch (InvalidStateOrderException e) {
