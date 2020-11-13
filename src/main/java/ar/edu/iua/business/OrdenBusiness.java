@@ -91,7 +91,7 @@ public class OrdenBusiness implements IOrdenBusiness {
         try {
             String numeroOrden = getNumeroOrden(ordenSurtidorDTO.getIdOrden());
             orden = findByNumeroOrden(numeroOrden);
-            String fechaPrevistaCarga = orden.getFechaPrevistaCarga().toString().split("T")[0].trim();
+            String fechaPrevistaCarga = orden.getFechaPrevistaCarga().toString().split(" ")[0].trim();
             String fechaSurtidor = ordenSurtidorDTO.getFecha().split("T")[0].trim();
             if (!fechaPrevistaCarga.equals(fechaSurtidor)) {
                 throw new OutOfDateException("No es el dia de carga");
@@ -125,7 +125,7 @@ public class OrdenBusiness implements IOrdenBusiness {
 
             double densidad = ordenSurtidorDTO.getMasaAcumulada() / capacidad;
 
-            OrdenDetalle ordenDetalle = new OrdenDetalle(ordenSurtidorDTO.getMasaAcumulada(), densidad, ordenSurtidorDTO.getTemperatura(), caudal, orden.getId());
+            OrdenDetalle ordenDetalle = new OrdenDetalle(ordenSurtidorDTO.getMasaAcumulada(), densidad, ordenSurtidorDTO.getTemperatura(), caudal, orden.getId(), dateSurtidor);
             if (caudal >= 0 && orden.getMasaAcumulada() < ordenSurtidorDTO.getMasaAcumulada() && ordenSurtidorDTO.getMasaAcumulada() > 0) {
                 if (orden.getFechaUltimoAlmacenamiento() != null) {
                     if ((dateSurtidor.getTime() - orden.getFechaUltimoAlmacenamiento().getTime()) >= 10000) {
