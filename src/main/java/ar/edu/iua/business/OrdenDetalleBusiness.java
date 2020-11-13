@@ -2,7 +2,6 @@ package ar.edu.iua.business;
 
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
-import ar.edu.iua.model.Orden;
 import ar.edu.iua.model.OrdenDetalle;
 import ar.edu.iua.model.persistence.OrdenDetalleRepository;
 import org.slf4j.Logger;

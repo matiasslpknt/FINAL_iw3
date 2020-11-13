@@ -1,8 +1,7 @@
 package ar.edu.iua.model;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "productos")

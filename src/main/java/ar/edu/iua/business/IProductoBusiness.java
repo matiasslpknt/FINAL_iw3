@@ -1,13 +1,10 @@
 package ar.edu.iua.business;
 
-import org.springframework.data.domain.Pageable;
-
-import java.util.List;
-
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
 import ar.edu.iua.model.Producto;
-import org.springframework.data.domain.Page;
+
+import java.util.List;
 
 public interface IProductoBusiness {
 

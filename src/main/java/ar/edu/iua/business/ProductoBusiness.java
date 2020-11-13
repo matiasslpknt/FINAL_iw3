@@ -1,21 +1,17 @@
 package ar.edu.iua.business;
 
-import org.springframework.data.domain.Pageable;
-
-import java.util.List;
-import java.util.Optional;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Service;
-
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
 import ar.edu.iua.model.Producto;
 import ar.edu.iua.model.persistence.ProductoRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductoBusiness implements IProductoBusiness {

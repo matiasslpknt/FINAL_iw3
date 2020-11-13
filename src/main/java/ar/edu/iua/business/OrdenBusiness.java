@@ -11,9 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -61,7 +59,6 @@ public class OrdenBusiness implements IOrdenBusiness {
             orden.setFechaGeneracionOrden(fechaGen);
             orden.setFechaUltimoAlmacenamiento(null);
             orden.setMasaAcumulada(0);
-            orden.setNumeroOrden(generarNumeroOrden());
             orden.setTemperatura(0);
             orden.setPassword("");
             orden.setPesajeInicial(0);
@@ -89,8 +86,7 @@ public class OrdenBusiness implements IOrdenBusiness {
             FullTankException, PresetLimitException, OutOfDateException {
         Orden orden = null;
         try {
-            String numeroOrden = getNumeroOrden(ordenSurtidorDTO.getIdOrden());
-            orden = findByNumeroOrden(numeroOrden);
+            orden = findByNumeroOrden(ordenSurtidorDTO.getIdOrden());
             String fechaPrevistaCarga = orden.getFechaPrevistaCarga().toString().split(" ")[0].trim();
             String fechaSurtidor = ordenSurtidorDTO.getFecha().split("T")[0].trim();
             if (!fechaPrevistaCarga.equals(fechaSurtidor)) {
@@ -99,40 +95,30 @@ public class OrdenBusiness implements IOrdenBusiness {
             if (!orden.getPassword().equals(ordenSurtidorDTO.getPassword())) {
                 throw new InvalidPasswordOrderException("Password Inválido");
             }
-
             if(orden.getEstado() == 3){
                 throw new InvalidStateOrderException("Orden cerrada.");
             }
             else if (orden.getEstado() != 2) {
                 throw new InvalidStateOrderException("La orden no se encuentra en estado 2.");
             }
-
             double capacidad = 0;
-
             for (Cisterna c : orden.getCamion().getCisternaList()) {
                 capacidad += c.getCapacidad();
             }
-
             if (ordenSurtidorDTO.getMasaAcumulada() > capacidad || ordenSurtidorDTO.getMasaAcumulada() > orden.getPreset()) {
                 orden = cerrarOrden(orden.getId());
                 return orden;
             }
-
             if (ordenSurtidorDTO.getMasaAcumulada() > capacidad) {
                 throw new FullTankException("No se puede cargar mas combustible, se excede la capacidad del camion");
             }
-
             if (ordenSurtidorDTO.getMasaAcumulada() > orden.getPreset()) {
                 throw new PresetLimitException("No se puede cargar mas combustible, se excede el preset");
             }
-
             DateFormat inputDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
             Date dateSurtidor = inputDF.parse(ordenSurtidorDTO.getFecha());
-
             double caudal = (ordenSurtidorDTO.getMasaAcumulada() - orden.getMasaAcumulada()) / 1;
-
             double densidad = ordenSurtidorDTO.getMasaAcumulada() / capacidad;
-
             OrdenDetalle ordenDetalle = new OrdenDetalle(ordenSurtidorDTO.getMasaAcumulada(), densidad, ordenSurtidorDTO.getTemperatura(), caudal, orden.getId(), dateSurtidor);
             if (caudal >= 0 && orden.getMasaAcumulada() < ordenSurtidorDTO.getMasaAcumulada() && ordenSurtidorDTO.getMasaAcumulada() > 0) {
                 if (orden.getFechaUltimoAlmacenamiento() != null) {
@@ -185,29 +171,29 @@ public class OrdenBusiness implements IOrdenBusiness {
         return order;
     }
 
-    private String generarNumeroOrden() {
-        String idUltimaOrdenSt = ordenDAO.getUltimoIdOrden();
-        if (idUltimaOrdenSt == null) {
-            return "000001";
-        }
-        int idUltimaOrden = Integer.parseInt(idUltimaOrdenSt);
-        int nuevoNumeroOrden = idUltimaOrden + 1;
-        String numeroOrden = "";
-        if (nuevoNumeroOrden <= 9) {
-            numeroOrden = "00000" + nuevoNumeroOrden;
-        } else if (nuevoNumeroOrden > 9 && nuevoNumeroOrden < 99) {
-            numeroOrden = "0000" + nuevoNumeroOrden;
-        } else if (nuevoNumeroOrden > 99 && nuevoNumeroOrden < 999) {
-            numeroOrden = "000" + nuevoNumeroOrden;
-        } else if (nuevoNumeroOrden > 999 && nuevoNumeroOrden < 9999) {
-            numeroOrden = "00" + nuevoNumeroOrden;
-        } else if (nuevoNumeroOrden > 9999 && nuevoNumeroOrden < 99999) {
-            numeroOrden = "0" + nuevoNumeroOrden;
-        } else {
-            numeroOrden = "" + nuevoNumeroOrden;
-        }
-        return numeroOrden;
-    }
+//    private String generarNumeroOrden() {
+//        String idUltimaOrdenSt = ordenDAO.getUltimoIdOrden();
+//        if (idUltimaOrdenSt == null) {
+//            return "000001";
+//        }
+//        int idUltimaOrden = Integer.parseInt(idUltimaOrdenSt);
+//        int nuevoNumeroOrden = idUltimaOrden + 1;
+//        String numeroOrden = "";
+//        if (nuevoNumeroOrden <= 9) {
+//            numeroOrden = "00000" + nuevoNumeroOrden;
+//        } else if (nuevoNumeroOrden > 9 && nuevoNumeroOrden < 99) {
+//            numeroOrden = "0000" + nuevoNumeroOrden;
+//        } else if (nuevoNumeroOrden > 99 && nuevoNumeroOrden < 999) {
+//            numeroOrden = "000" + nuevoNumeroOrden;
+//        } else if (nuevoNumeroOrden > 999 && nuevoNumeroOrden < 9999) {
+//            numeroOrden = "00" + nuevoNumeroOrden;
+//        } else if (nuevoNumeroOrden > 9999 && nuevoNumeroOrden < 99999) {
+//            numeroOrden = "0" + nuevoNumeroOrden;
+//        } else {
+//            numeroOrden = "" + nuevoNumeroOrden;
+//        }
+//        return numeroOrden;
+//    }
 
     private String getNumeroOrden(String orden) {
         String ordenNueva = "";
@@ -231,16 +217,13 @@ public class OrdenBusiness implements IOrdenBusiness {
     public Orden actualizarPesajeInicial(PesajeDTO pesajeDTO) throws BusinessException, NotFoundException, InvalidStateOrderException {
         Orden orden = null;
         try {
-            String numeroOrden = getNumeroOrden(pesajeDTO.getIdOrden());
-            orden = findByNumeroOrden(numeroOrden);
-
+            orden = findByNumeroOrden(pesajeDTO.getIdOrden());
             if (orden.getEstado() != 1) {
                 throw new InvalidStateOrderException("La orden no se encuentra en estado 1.");
             }
-
             Date dateSurtidor = java.util.Calendar.getInstance().getTime();
             String password = generarRandomPassword(5);
-            ordenDAO.actualizarPesajeInicial(numeroOrden, pesajeDTO.getPeso(), dateSurtidor, 2, password);
+            ordenDAO.actualizarPesajeInicial(pesajeDTO.getIdOrden(), pesajeDTO.getPeso(), dateSurtidor, 2, password);
             orden = load(orden.getId());
         } catch (BusinessException e) {
             log.error(e.getMessage(), e);
