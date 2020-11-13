@@ -100,7 +100,10 @@ public class OrdenBusiness implements IOrdenBusiness {
                 throw new InvalidPasswordOrderException("Password Inválido");
             }
 
-            if (orden.getEstado() != 2) {
+            if(orden.getEstado() == 3){
+                throw new InvalidStateOrderException("Orden cerrada.");
+            }
+            else if (orden.getEstado() != 2) {
                 throw new InvalidStateOrderException("La orden no se encuentra en estado 2.");
             }
 
@@ -108,6 +111,11 @@ public class OrdenBusiness implements IOrdenBusiness {
 
             for (Cisterna c : orden.getCamion().getCisternaList()) {
                 capacidad += c.getCapacidad();
+            }
+
+            if (ordenSurtidorDTO.getMasaAcumulada() > capacidad || ordenSurtidorDTO.getMasaAcumulada() > orden.getPreset()) {
+                orden = cerrarOrden(orden.getId());
+                return orden;
             }
 
             if (ordenSurtidorDTO.getMasaAcumulada() > capacidad) {
@@ -256,5 +264,28 @@ public class OrdenBusiness implements IOrdenBusiness {
             sb.append(caracteres.charAt(randomIndex));
         }
         return sb.toString();
+    }
+
+    @Override
+    public Orden cerrarOrden(long idOrden) throws BusinessException, NotFoundException, InvalidStateOrderException{
+        Orden orden = null;
+        try {
+            orden = load(idOrden);
+            if(orden.getEstado() == 2){
+                ordenDAO.cerrarOrden(idOrden);
+            }else{
+                throw  new InvalidStateOrderException("La orden debe estar en estado 2.");
+            }
+        } catch(InvalidStateOrderException e){
+            log.error(e.getMessage(), e);
+            throw new InvalidStateOrderException(e);
+        }catch (BusinessException e) {
+            log.error(e.getMessage(), e);
+            throw new BusinessException(e);
+        }
+        if (orden == null) {
+            throw new NotFoundException("No se encontro ningun producto cn el filtro especificado.");
+        }
+        return orden;
     }
 }

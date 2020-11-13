@@ -33,4 +33,9 @@ public interface OrdenRepository extends JpaRepository<Orden, Long> {
     @Transactional
     @Query(value = "UPDATE orden p SET p.pesaje_inicial = ?2, p.fecha_pesaje = ?3, p.estado = ?4, p.password = ?5 WHERE p.numero_orden = ?1", nativeQuery = true)
     void actualizarPesajeInicial(String idOrden, double peso , Date fechaPesaje, int estado, String password);
+
+    @Modifying(flushAutomatically = true, clearAutomatically = true)
+    @Transactional
+    @Query(value = "UPDATE orden o SET o.estado = 3 WHERE o.id = ?1", nativeQuery = true)
+    void cerrarOrden(long idOrden);
 }

@@ -116,4 +116,20 @@ public class OrdenRestController extends BaseRestController {
             return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @PutMapping(value = "cerrarOrden", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Orden> cerrarOrden(@RequestBody long idOrden) {
+        Orden p = null;
+        try {
+            p = ordenBusiness.cerrarOrden(idOrden);
+            return new ResponseEntity<Orden>(p, HttpStatus.OK);
+        } catch (BusinessException e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<Orden>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (NotFoundException e) {
+            return new ResponseEntity<Orden>(HttpStatus.NOT_FOUND);
+        } catch (InvalidStateOrderException e) {
+            return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }
