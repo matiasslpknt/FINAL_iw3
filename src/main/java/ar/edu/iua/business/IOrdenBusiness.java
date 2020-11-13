@@ -25,5 +25,5 @@ public interface IOrdenBusiness {
 
     public Orden actualizarPesajeInicial(PesajeDTO pesajeDTO) throws BusinessException, NotFoundException,
             InvalidStateOrderException, OutOfDateException;
-    public Orden cerrarOrden(long idOrden) throws BusinessException, NotFoundException, InvalidStateOrderException;
+    public Orden cerrarOrdenPorNumeroOrden(String numeroOrden) throws BusinessException, NotFoundException, InvalidStateOrderException;
 }

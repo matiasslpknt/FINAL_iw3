@@ -2,6 +2,7 @@ package ar.edu.iua.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "conciliacion")
@@ -9,92 +10,96 @@ public class Conciliacion implements Serializable {
 
     private static final long serialVersionUID = -1609250874892904470L;
 
+    public Conciliacion(double masaAcumulada, double densidad, double temperatura, double caudal, long idOrden, Date fecha){
+        this.masaAcumulada = masaAcumulada;
+        this.densidad = densidad;
+        this.temperatura = temperatura;
+        this.caudal = caudal;
+        this.idOrden = idOrden;
+        this.fecha = fecha;
+    }
+
+    public Conciliacion(){
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
-    private double pesajeInicial;
-    private double pesajeFinal;
-    private double cantidadCargada;
-    private double pesoNeto;
-    private double diferencia;
-    private double promedioTemperatura;
-    private double promedioDensidad;
-    private double promedioCaudal;
+    private double masaAcumulada;
+
+    private double densidad;
+
+    private double temperatura;
+
+    private double caudal;
+
+    private Date fecha;
+
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "orden_id")
+//    private Orden orden;
+
+    private long idOrden;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public Long getId() {
-        return id;
+    public double getMasaAcumulada() {
+        return masaAcumulada;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setMasaAcumulada(double masaAcumulada) {
+        this.masaAcumulada = masaAcumulada;
     }
 
-    public double getPesajeInicial() {
-        return pesajeInicial;
+    public double getDensidad() {
+        return densidad;
     }
 
-    public void setPesajeInicial(double pesajeInicial) {
-        this.pesajeInicial = pesajeInicial;
+    public void setDensidad(double densidad) {
+        this.densidad = densidad;
     }
 
-    public double getPesajeFinal() {
-        return pesajeFinal;
+    public double getTemperatura() {
+        return temperatura;
     }
 
-    public void setPesajeFinal(double pesajeFinal) {
-        this.pesajeFinal = pesajeFinal;
+    public void setTemperatura(double temperatura) {
+        this.temperatura = temperatura;
     }
 
-    public double getCantidadCargada() {
-        return cantidadCargada;
+    public double getCaudal() {
+        return caudal;
     }
 
-    public void setCantidadCargada(double cantidadCargada) {
-        this.cantidadCargada = cantidadCargada;
+    public void setCaudal(double caudal) {
+        this.caudal = caudal;
     }
 
-    public double getPesoNeto() {
-        return pesoNeto;
+    public long getIdOrden() {
+        return idOrden;
     }
 
-    public void setPesoNeto(double pesoNeto) {
-        this.pesoNeto = pesoNeto;
+    public void setIdOrden(long idOrden) {
+        this.idOrden = idOrden;
     }
 
-    public double getDiferencia() {
-        return diferencia;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setDiferencia(double diferencia) {
-        this.diferencia = diferencia;
-    }
-
-    public double getPromedioTemperatura() {
-        return promedioTemperatura;
-    }
-
-    public void setPromedioTemperatura(double promedioTemperatura) {
-        this.promedioTemperatura = promedioTemperatura;
-    }
-
-    public double getPromedioDensidad() {
-        return promedioDensidad;
-    }
-
-    public void setPromedioDensidad(double promedioDensidad) {
-        this.promedioDensidad = promedioDensidad;
-    }
-
-    public double getPromedioCaudal() {
-        return promedioCaudal;
-    }
-
-    public void setPromedioCaudal(double promedioCaudal) {
-        this.promedioCaudal = promedioCaudal;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 }

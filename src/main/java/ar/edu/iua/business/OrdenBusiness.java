@@ -52,7 +52,7 @@ public class OrdenBusiness implements IOrdenBusiness {
     @Override
     public Orden save(Orden orden) throws BusinessException {
         try {
-            if(orden.getTiempoAlmacenaje() == 0){
+            if (orden.getTiempoAlmacenaje() == 0) {
                 orden.setTiempoAlmacenaje(Constantes.TIEMPO_ALMACENAJE);
             }
             orden.setEstado(1);
@@ -99,10 +99,9 @@ public class OrdenBusiness implements IOrdenBusiness {
             if (!orden.getPassword().equals(ordenSurtidorDTO.getPassword())) {
                 throw new InvalidPasswordOrderException("Password Inválido");
             }
-            if(orden.getEstado() == 3){
+            if (orden.getEstado() == 3) {
                 throw new InvalidStateOrderException("Orden cerrada.");
-            }
-            else if (orden.getEstado() != 2) {
+            } else if (orden.getEstado() != 2) {
                 throw new InvalidStateOrderException("La orden no se encuentra en estado 2.");
             }
             double capacidad = 0;
@@ -256,21 +255,48 @@ public class OrdenBusiness implements IOrdenBusiness {
         return sb.toString();
     }
 
-    @Override
-    public Orden cerrarOrden(long idOrden) throws BusinessException, NotFoundException, InvalidStateOrderException{
+    public Orden cerrarOrden(long idOrden) throws BusinessException, NotFoundException, InvalidStateOrderException {
         Orden orden = null;
         try {
             orden = load(idOrden);
-            if(orden.getEstado() == 2){
+            if (orden.getEstado() == 3) {
+                throw new InvalidStateOrderException("La orden ya fue cerrada.");
+            } else if (orden.getEstado() == 2) {
                 ordenDAO.cerrarOrden(idOrden);
-                orden = load(idOrden);
-            }else{
-                throw  new InvalidStateOrderException("La orden debe estar en estado 2.");
+                orden = load(orden.getId());
+            } else {
+                throw new InvalidStateOrderException("La orden debe estar en estado 2.");
             }
-        } catch(InvalidStateOrderException e){
+        } catch (InvalidStateOrderException e) {
             log.error(e.getMessage(), e);
             throw new InvalidStateOrderException(e);
-        }catch (BusinessException e) {
+        } catch (BusinessException e) {
+            log.error(e.getMessage(), e);
+            throw new BusinessException(e);
+        }
+        if (orden == null) {
+            throw new NotFoundException("No se encontro ningun producto cn el filtro especificado.");
+        }
+        return orden;
+    }
+
+    @Override
+    public Orden cerrarOrdenPorNumeroOrden(String numeroOrden) throws BusinessException, NotFoundException, InvalidStateOrderException {
+        Orden orden = null;
+        try {
+            orden = findByNumeroOrden(numeroOrden);
+            if (orden.getEstado() == 3) {
+                throw new InvalidStateOrderException("La orden ya fue cerrada.");
+            } else if (orden.getEstado() == 2) {
+                ordenDAO.cerrarOrdenPorNumeroOrden(numeroOrden);
+                orden = load(orden.getId());
+            } else {
+                throw new InvalidStateOrderException("La orden debe estar en estado 2.");
+            }
+        } catch (InvalidStateOrderException e) {
+            log.error(e.getMessage(), e);
+            throw new InvalidStateOrderException(e);
+        } catch (BusinessException e) {
             log.error(e.getMessage(), e);
             throw new BusinessException(e);
         }
