@@ -26,6 +26,8 @@ public class OrdenBusiness implements IOrdenBusiness {
     private OrdenRepository ordenDAO;
     @Autowired
     private OrdenDetalleBusiness ordenDetalleBusiness;
+    @Autowired
+    private ConciliacionBusiness conciliacionBusiness;
 
     @Override
     public Orden load(Long id) throws BusinessException, NotFoundException {
@@ -312,15 +314,17 @@ public class OrdenBusiness implements IOrdenBusiness {
         Conciliacion conciliacion = null;
         try {
             orden = findByNumeroOrden(pesajeDTO.getIdOrden());
-            if (orden.getEstado() != 3) {
+            if (orden.getEstado() < 3) {
                 throw new InvalidStateOrderException("La orden no se ha cerrado aún.");
+            } else if (orden.getEstado() == 3) {
+                Date dateSurtidor = java.util.Calendar.getInstance().getTime();
+                ordenDAO.actualizarPesajeFinal(pesajeDTO.getIdOrden(), pesajeDTO.getPeso(), dateSurtidor, 4);
+                conciliacion = calcularConciliacion(orden.getId());
+                conciliacion = conciliacionBusiness.save(conciliacion);
+                ordenDAO.actualizarConciliacion(orden.getId(), conciliacion.getId());
+                orden = load(orden.getId());
             }
-            Date dateSurtidor = java.util.Calendar.getInstance().getTime();
-            ordenDAO.actualizarPesajeFinal(pesajeDTO.getIdOrden(), pesajeDTO.getPeso(), dateSurtidor, 4);
-            orden = load(orden.getId());
-            conciliacion = calcularConciliacion(orden.getId());
-            orden.setConciliacion(conciliacion);
-            save(orden);
+            conciliacion = orden.getConciliacion();
         } catch (BusinessException e) {
             log.error(e.getMessage(), e);
             throw new BusinessException(e);

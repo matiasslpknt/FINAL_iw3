@@ -10,20 +10,18 @@ public class Conciliacion implements Serializable {
 
     private static final long serialVersionUID = -1609250874892904470L;
 
-    public Conciliacion(double pesajeInicial, double pesajeFinal, double netoBalanza, double diferenciaBalanzaCaudalimetro, double productoCargado, double densidad, double temperatura, double caudal, long idOrden, Date fecha) {
+    public Conciliacion(double pesajeInicial, double pesajeFinal, double netoBalanza, double diferenciaBalanzaCaudalimetro, double productoCargado, double densidad, double temperatura, double caudal) {
         this.pesajeInicial = pesajeInicial;
         this.pesajeFinal = pesajeFinal;
         this.netoBalanza = netoBalanza;
         this.diferenciaBalanzaCaudalimetro = diferenciaBalanzaCaudalimetro;
         this.productoCargado = productoCargado;
-        this.idOrden = idOrden;
         this.densidad = densidad;
         this.temperatura = temperatura;
         this.caudal = caudal;
     }
 
     public Conciliacion() {
-
     }
 
     @Id
@@ -37,8 +35,6 @@ public class Conciliacion implements Serializable {
     private double temperatura;
 
     private double caudal;
-
-    private long idOrden;
 
     private double pesajeInicial;
 
@@ -82,14 +78,6 @@ public class Conciliacion implements Serializable {
 
     public void setCaudal(double caudal) {
         this.caudal = caudal;
-    }
-
-    public long getIdOrden() {
-        return idOrden;
-    }
-
-    public void setIdOrden(long idOrden) {
-        this.idOrden = idOrden;
     }
 
     public double getProductoCargado() {
