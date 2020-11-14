@@ -54,9 +54,6 @@ public class OrdenBusiness implements IOrdenBusiness {
     @Override
     public Orden save(Orden orden) throws BusinessException {
         try {
-            if (orden.getTiempoAlmacenaje() == 0) {
-                orden.setTiempoAlmacenaje(Constantes.TIEMPO_ALMACENAJE);
-            }
             orden.setEstado(1);
             orden.setCaudal(0);
             orden.setDensidad(0);
@@ -125,14 +122,20 @@ public class OrdenBusiness implements IOrdenBusiness {
             double caudal = (ordenSurtidorDTO.getMasaAcumulada() - orden.getMasaAcumulada()) / 1;
             double densidad = ordenSurtidorDTO.getMasaAcumulada() / capacidad;
             OrdenDetalle ordenDetalle = new OrdenDetalle(ordenSurtidorDTO.getMasaAcumulada(), densidad, ordenSurtidorDTO.getTemperatura(), caudal, orden.getId(), dateSurtidor);
-            if (caudal >= 0 && orden.getMasaAcumulada() < ordenSurtidorDTO.getMasaAcumulada() && ordenSurtidorDTO.getMasaAcumulada() > 0) {
+            if (caudal > 0 && orden.getMasaAcumulada() < ordenSurtidorDTO.getMasaAcumulada() && ordenSurtidorDTO.getMasaAcumulada() > 0) {
                 if (orden.getFechaUltimoAlmacenamiento() != null) {
-                    if ((dateSurtidor.getTime() - orden.getFechaUltimoAlmacenamiento().getTime()) >= orden.getTiempoAlmacenaje()) {
+                    if(orden.getTiempoAlmacenaje() != 0){
+                        if ((dateSurtidor.getTime() - orden.getFechaUltimoAlmacenamiento().getTime()) >= orden.getTiempoAlmacenaje()) {
+                            ordenDetalleBusiness.save(ordenDetalle);
+                            ordenDAO.actualizarOrdenSurtidorConFecha(orden.getId(), caudal, densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada(), dateSurtidor);
+                            orden = load(orden.getId());
+                        } else {
+                            ordenDAO.actualizarOrdenSurtidor(orden.getId(), caudal, densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada());
+                            orden = load(orden.getId());
+                        }
+                    }else{
                         ordenDetalleBusiness.save(ordenDetalle);
                         ordenDAO.actualizarOrdenSurtidorConFecha(orden.getId(), caudal, densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada(), dateSurtidor);
-                        orden = load(orden.getId());
-                    } else {
-                        ordenDAO.actualizarOrdenSurtidor(orden.getId(), caudal, densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada());
                         orden = load(orden.getId());
                     }
                 } else {
@@ -343,9 +346,6 @@ public class OrdenBusiness implements IOrdenBusiness {
         try {
             Orden orden = load(idOrden);
             List<OrdenDetalle> lista = ordenDetalleBusiness.getAllOrdenDetalleByIdOrden(idOrden);
-            System.out.println("=================================================");
-            System.out.println(orden.getPesajeInicial());
-            System.out.println("=================================================");
             conciliacion.setPesajeInicial(orden.getPesajeInicial());
             conciliacion.setPesajeFinal(orden.getPesajeFinal());
             conciliacion.setProductoCargado(orden.getMasaAcumulada());
