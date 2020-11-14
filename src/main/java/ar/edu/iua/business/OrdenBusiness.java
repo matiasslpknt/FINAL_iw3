@@ -281,14 +281,14 @@ public class OrdenBusiness implements IOrdenBusiness {
     }
 
     @Override
-    public Orden cerrarOrdenPorNumeroOrden(String numeroOrden) throws BusinessException, NotFoundException, InvalidStateOrderException {
+    public Orden cerrarOrdenPorNumeroOrden(OrdenSurtidorDTO ordenDTO) throws BusinessException, NotFoundException, InvalidStateOrderException {
         Orden orden = null;
         try {
-            orden = findByNumeroOrden(numeroOrden);
+            orden = findByNumeroOrden(ordenDTO.getIdOrden());
             if (orden.getEstado() == 3) {
                 throw new InvalidStateOrderException("La orden ya fue cerrada.");
             } else if (orden.getEstado() == 2) {
-                ordenDAO.cerrarOrdenPorNumeroOrden(numeroOrden);
+                ordenDAO.cerrarOrdenPorNumeroOrden(ordenDTO.getIdOrden());
                 orden = load(orden.getId());
             } else {
                 throw new InvalidStateOrderException("La orden debe estar en estado 2.");
@@ -335,10 +335,13 @@ public class OrdenBusiness implements IOrdenBusiness {
     }
 
     public Conciliacion calcularConciliacion(long idOrden) throws BusinessException, NotFoundException{
-        Conciliacion conciliacion = null;
+        Conciliacion conciliacion = new Conciliacion();
         try {
             Orden orden = load(idOrden);
             List<OrdenDetalle> lista = ordenDetalleBusiness.getAllOrdenDetalleByIdOrden(idOrden);
+            System.out.println("=================================================");
+            System.out.println(orden.getPesajeInicial());
+            System.out.println("=================================================");
             conciliacion.setPesajeInicial(orden.getPesajeInicial());
             conciliacion.setPesajeFinal(orden.getPesajeFinal());
             conciliacion.setProductoCargado(orden.getMasaAcumulada());

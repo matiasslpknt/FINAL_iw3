@@ -118,10 +118,10 @@ public class OrdenRestController extends BaseRestController {
     }
 
     @PutMapping(value = "cerrarOrden", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Orden> cerrarOrden(@RequestBody String numeroOrden) {
+    public ResponseEntity<Orden> cerrarOrden(@RequestBody OrdenSurtidorDTO orden) {
         Orden p = null;
         try {
-            p = ordenBusiness.cerrarOrdenPorNumeroOrden(numeroOrden);
+            p = ordenBusiness.cerrarOrdenPorNumeroOrden(orden);
             return new ResponseEntity<Orden>(p, HttpStatus.OK);
         } catch (BusinessException e) {
             log.error(e.getMessage(), e);
