@@ -57,7 +57,6 @@ public class OrdenBusiness implements IOrdenBusiness {
             orden.setEstado(1);
             orden.setCaudal(0);
             orden.setDensidad(0);
-            orden.setDensidad(0);
             Date fechaGen = java.util.Calendar.getInstance().getTime();
             orden.setFechaGeneracionOrden(fechaGen);
             orden.setFechaUltimoAlmacenamiento(null);
@@ -323,6 +322,7 @@ public class OrdenBusiness implements IOrdenBusiness {
                 Date dateSurtidor = java.util.Calendar.getInstance().getTime();
                 ordenDAO.actualizarPesajeFinal(pesajeDTO.getIdOrden(), pesajeDTO.getPeso(), dateSurtidor, 4);
                 conciliacion = calcularConciliacion(orden.getId());
+                conciliacion.setNumeroOrden(pesajeDTO.getIdOrden());
                 conciliacion = conciliacionBusiness.save(conciliacion);
                 ordenDAO.actualizarConciliacion(orden.getId(), conciliacion.getId());
                 orden = load(orden.getId());

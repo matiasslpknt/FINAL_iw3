@@ -1,5 +1,7 @@
 package ar.edu.iua.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -26,7 +28,10 @@ public class Conciliacion implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonBackReference
     private long id;
+
+    private String numeroOrden;
 
     private double productoCargado;
 
@@ -118,5 +123,13 @@ public class Conciliacion implements Serializable {
 
     public void setDiferenciaBalanzaCaudalimetro(double diferenciaBalanzaCaudalimetro) {
         this.diferenciaBalanzaCaudalimetro = diferenciaBalanzaCaudalimetro;
+    }
+
+    public String getNumeroOrden() {
+        return numeroOrden;
+    }
+
+    public void setNumeroOrden(String numeroOrden) {
+        this.numeroOrden = numeroOrden;
     }
 }

@@ -3,6 +3,7 @@ package ar.edu.iua.business;
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
 import ar.edu.iua.model.Conciliacion;
+import ar.edu.iua.model.Orden;
 import ar.edu.iua.model.persistence.ConciliacionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,8 @@ public class ConciliacionBusiness implements IConciliacionBusiness {
 
     @Autowired
     private ConciliacionRepository conciliacionDAO;
+    @Autowired
+    private IOrdenBusiness ordenBusiness;
 
     @Override
     public Conciliacion load(Long id) throws BusinessException, NotFoundException {
@@ -61,5 +64,19 @@ public class ConciliacionBusiness implements IConciliacionBusiness {
         } catch (Exception e) {
             throw new BusinessException(e);
         }
+    }
+
+    @Override
+    public Conciliacion getConciliacionByNumeroOrden(String numerOrden) throws BusinessException, NotFoundException {
+        Conciliacion conciliacion = null;
+        try {
+            Orden orden = ordenBusiness.findByNumeroOrden(numerOrden);
+            conciliacion = load(orden.getId());
+        }  catch (Exception e) {
+        throw new BusinessException(e);
+    }
+        if (conciliacion == null)
+                throw new NotFoundException("No se encuentran datos para ese numero de orden.");
+        return conciliacion;
     }
 }

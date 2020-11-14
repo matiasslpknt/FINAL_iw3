@@ -14,4 +14,6 @@ public interface IConciliacionBusiness {
     public Conciliacion save(Conciliacion orden) throws BusinessException;
 
     public void delete(Long id) throws BusinessException, NotFoundException;
+
+    public Conciliacion getConciliacionByNumeroOrden(String numerOrden) throws BusinessException, NotFoundException;
 }
