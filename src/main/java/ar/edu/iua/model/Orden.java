@@ -82,9 +82,13 @@ public class Orden implements Serializable {
 
     private double pesajeInicial;
 
-    private Date fechaPesaje;
+    private Date fechaPesajeInicial;
 
     private long tiempoAlmacenaje;
+
+    private double pesajeFinal;
+
+    private Date fechaPesajeFinal;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -235,11 +239,11 @@ public class Orden implements Serializable {
     }
 
     public Date getFechaPesaje() {
-        return fechaPesaje;
+        return fechaPesajeInicial;
     }
 
-    public void setFechaPesaje(Date fechaPesaje) {
-        this.fechaPesaje = fechaPesaje;
+    public void setFechaPesaje(Date fechaPesajeInicial) {
+        this.fechaPesajeInicial = fechaPesajeInicial;
     }
 
     public long getTiempoAlmacenaje() {
@@ -248,5 +252,29 @@ public class Orden implements Serializable {
 
     public void setTiempoAlmacenaje(long tiempoAlmacenaje) {
         this.tiempoAlmacenaje = tiempoAlmacenaje;
+    }
+
+    public Date getFechaPesajeInicial() {
+        return fechaPesajeInicial;
+    }
+
+    public void setFechaPesajeInicial(Date fechaPesajeInicial) {
+        this.fechaPesajeInicial = fechaPesajeInicial;
+    }
+
+    public double getPesajeFinal() {
+        return pesajeFinal;
+    }
+
+    public void setPesajeFinal(double pesajeFinal) {
+        this.pesajeFinal = pesajeFinal;
+    }
+
+    public Date getFechaPesajeFinal() {
+        return fechaPesajeFinal;
+    }
+
+    public void setFechaPesajeFinal(Date fechaPesajeFinal) {
+        this.fechaPesajeFinal = fechaPesajeFinal;
     }
 }

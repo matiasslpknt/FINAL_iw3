@@ -72,4 +72,16 @@ public class OrdenDetalleBusiness implements IOrdenDetalleBusiness {
         }
     }
 
+    public List<OrdenDetalle> getAllOrdenDetalleByIdOrden(long idOrden) throws BusinessException, NotFoundException {
+        List<OrdenDetalle> lista = null;
+        try {
+            lista = ordenDetalleDAO.findAllByIdOrden(idOrden);
+        } catch (Exception e) {
+            throw new BusinessException(e);
+        }
+        if (lista.size() == 0) {
+            throw new NotFoundException("No se encontraron detalles con id de orden =" + idOrden);
+        }
+        return lista;
+    }
 }

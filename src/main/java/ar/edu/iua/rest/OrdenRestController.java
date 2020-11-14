@@ -101,7 +101,7 @@ public class OrdenRestController extends BaseRestController {
         }
     }
 
-    @PutMapping(value = "pesaje", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "pesajeInicial", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Orden> actualizarPesajeInicial(@RequestBody PesajeDTO pesajeDTO) {
         Orden p = null;
         try {
@@ -122,6 +122,22 @@ public class OrdenRestController extends BaseRestController {
         Orden p = null;
         try {
             p = ordenBusiness.cerrarOrdenPorNumeroOrden(numeroOrden);
+            return new ResponseEntity<Orden>(p, HttpStatus.OK);
+        } catch (BusinessException e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<Orden>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (NotFoundException e) {
+            return new ResponseEntity<Orden>(HttpStatus.NOT_FOUND);
+        } catch (InvalidStateOrderException e) {
+            return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping(value = "pesajeFinal", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Orden> actualizarPesajeFinal(@RequestBody PesajeDTO pesajeDTO) {
+        Orden p = null;
+        try {
+            p = ordenBusiness.actualizarPesajeFinal(pesajeDTO);
             return new ResponseEntity<Orden>(p, HttpStatus.OK);
         } catch (BusinessException e) {
             log.error(e.getMessage(), e);

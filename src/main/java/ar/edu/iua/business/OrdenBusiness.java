@@ -305,4 +305,69 @@ public class OrdenBusiness implements IOrdenBusiness {
         }
         return orden;
     }
+
+    @Override
+    public Orden actualizarPesajeFinal(PesajeDTO pesajeDTO) throws BusinessException, NotFoundException, InvalidStateOrderException {
+        Orden orden = null;
+        Conciliacion conciliacion = null;
+        try {
+            orden = findByNumeroOrden(pesajeDTO.getIdOrden());
+            if (orden.getEstado() != 3) {
+                throw new InvalidStateOrderException("La orden no se ha cerrado aún.");
+            }
+            Date dateSurtidor = java.util.Calendar.getInstance().getTime();
+            ordenDAO.actualizarPesajeFinal(pesajeDTO.getIdOrden(), pesajeDTO.getPeso(), dateSurtidor, 4);
+            orden = load(orden.getId());
+            conciliacion = calcularConciliacion(orden.getId());
+            orden.setConciliacion(conciliacion);
+            save(orden);
+        } catch (BusinessException e) {
+            log.error(e.getMessage(), e);
+            throw new BusinessException(e);
+        } catch (InvalidStateOrderException e) {
+            log.error(e.getMessage(), e);
+            throw new InvalidStateOrderException("La orden no se ha cerrado aún.");
+        }
+        if (orden == null || conciliacion == null) {
+            throw new NotFoundException("No se encontro ninguna orden con el filtro especificado.");
+        }
+        return orden;
+    }
+
+    public Conciliacion calcularConciliacion(long idOrden) throws BusinessException, NotFoundException{
+        Conciliacion conciliacion = null;
+        try {
+            Orden orden = load(idOrden);
+            List<OrdenDetalle> lista = ordenDetalleBusiness.getAllOrdenDetalleByIdOrden(idOrden);
+            conciliacion.setPesajeInicial(orden.getPesajeInicial());
+            conciliacion.setPesajeFinal(orden.getPesajeFinal());
+            conciliacion.setProductoCargado(orden.getMasaAcumulada());
+            double netoPorBalanza = orden.getPesajeFinal() - orden.getPesajeInicial();
+            conciliacion.setNetoBalanza(netoPorBalanza);
+            double diferencia = netoPorBalanza - orden.getMasaAcumulada();
+            conciliacion.setDiferenciaBalanzaCaudalimetro(diferencia);
+            double temperatura = 0;
+            double densidad = 0;
+            double caudal = 0;
+            for(OrdenDetalle ordenAux : lista){
+                temperatura += ordenAux.getTemperatura();
+                densidad += ordenAux.getDensidad();
+                caudal += ordenAux.getCaudal();
+            }
+            double promTemperatura = temperatura/lista.size();
+            double promDensidad = densidad/lista.size();
+            double promCaudal = caudal/lista.size();
+            conciliacion.setTemperatura(promTemperatura);
+            conciliacion.setDensidad(promDensidad);
+            conciliacion.setCaudal(promCaudal);
+        } catch (BusinessException e) {
+            log.error(e.getMessage(), e);
+            throw new BusinessException(e);
+        } catch (NotFoundException e) {
+            log.error(e.getMessage(), e);
+            throw new NotFoundException(e);
+        }
+
+        return conciliacion;
+    }
 }

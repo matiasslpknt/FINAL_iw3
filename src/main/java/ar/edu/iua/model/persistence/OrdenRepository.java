@@ -29,7 +29,7 @@ public interface OrdenRepository extends JpaRepository<Orden, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE orden p SET p.pesaje_inicial = ?2, p.fecha_pesaje = ?3, p.estado = ?4, p.password = ?5 WHERE p.numero_orden = ?1", nativeQuery = true)
+    @Query(value = "UPDATE orden p SET p.pesaje_inicial = ?2, p.fecha_pesaje_inicial = ?3, p.estado = ?4, p.password = ?5 WHERE p.numero_orden = ?1", nativeQuery = true)
     void actualizarPesajeInicial(String idOrden, double peso , Date fechaPesaje, int estado, String password);
 
     @Modifying
@@ -41,4 +41,9 @@ public interface OrdenRepository extends JpaRepository<Orden, Long> {
     @Transactional
     @Query(value = "UPDATE orden o SET o.estado = 3 WHERE o.numero_orden = ?1", nativeQuery = true)
     void cerrarOrdenPorNumeroOrden(String numeroOrden);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE orden p SET p.pesaje_final = ?2, p.fecha_pesaje_final = ?3, p.estado = ?4 WHERE p.numero_orden = ?1", nativeQuery = true)
+    void actualizarPesajeFinal(String idOrden, double peso , Date fechaPesaje, int estado);
 }

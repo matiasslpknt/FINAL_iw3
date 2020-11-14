@@ -10,16 +10,19 @@ public class Conciliacion implements Serializable {
 
     private static final long serialVersionUID = -1609250874892904470L;
 
-    public Conciliacion(double masaAcumulada, double densidad, double temperatura, double caudal, long idOrden, Date fecha){
-        this.masaAcumulada = masaAcumulada;
+    public Conciliacion(double pesajeInicial, double pesajeFinal, double netoBalanza, double diferenciaBalanzaCaudalimetro, double productoCargado, double densidad, double temperatura, double caudal, long idOrden, Date fecha) {
+        this.pesajeInicial = pesajeInicial;
+        this.pesajeFinal = pesajeFinal;
+        this.netoBalanza = netoBalanza;
+        this.diferenciaBalanzaCaudalimetro = diferenciaBalanzaCaudalimetro;
+        this.productoCargado = productoCargado;
+        this.idOrden = idOrden;
         this.densidad = densidad;
         this.temperatura = temperatura;
         this.caudal = caudal;
-        this.idOrden = idOrden;
-        this.fecha = fecha;
     }
 
-    public Conciliacion(){
+    public Conciliacion() {
 
     }
 
@@ -27,7 +30,7 @@ public class Conciliacion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private double masaAcumulada;
+    private double productoCargado;
 
     private double densidad;
 
@@ -35,13 +38,15 @@ public class Conciliacion implements Serializable {
 
     private double caudal;
 
-    private Date fecha;
-
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "orden_id")
-//    private Orden orden;
-
     private long idOrden;
+
+    private double pesajeInicial;
+
+    private double pesajeFinal;
+
+    private double netoBalanza;
+
+    private double diferenciaBalanzaCaudalimetro;
 
     public long getId() {
         return id;
@@ -53,14 +58,6 @@ public class Conciliacion implements Serializable {
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
-    }
-
-    public double getMasaAcumulada() {
-        return masaAcumulada;
-    }
-
-    public void setMasaAcumulada(double masaAcumulada) {
-        this.masaAcumulada = masaAcumulada;
     }
 
     public double getDensidad() {
@@ -95,11 +92,43 @@ public class Conciliacion implements Serializable {
         this.idOrden = idOrden;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public double getProductoCargado() {
+        return productoCargado;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setProductoCargado(double productoCargado) {
+        this.productoCargado = productoCargado;
+    }
+
+    public double getPesajeInicial() {
+        return pesajeInicial;
+    }
+
+    public void setPesajeInicial(double pesajeInicial) {
+        this.pesajeInicial = pesajeInicial;
+    }
+
+    public double getPesajeFinal() {
+        return pesajeFinal;
+    }
+
+    public void setPesajeFinal(double pesajeFinal) {
+        this.pesajeFinal = pesajeFinal;
+    }
+
+    public double getNetoBalanza() {
+        return netoBalanza;
+    }
+
+    public void setNetoBalanza(double netoBalanza) {
+        this.netoBalanza = netoBalanza;
+    }
+
+    public double getDiferenciaBalanzaCaudalimetro() {
+        return diferenciaBalanzaCaudalimetro;
+    }
+
+    public void setDiferenciaBalanzaCaudalimetro(double diferenciaBalanzaCaudalimetro) {
+        this.diferenciaBalanzaCaudalimetro = diferenciaBalanzaCaudalimetro;
     }
 }
