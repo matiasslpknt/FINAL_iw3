@@ -3,7 +3,6 @@ package ar.edu.iua.business;
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
 import ar.edu.iua.model.Conciliacion;
-import ar.edu.iua.model.Orden;
 import ar.edu.iua.model.persistence.ConciliacionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,11 +70,11 @@ public class ConciliacionBusiness implements IConciliacionBusiness {
         Conciliacion conciliacion = null;
         try {
             conciliacion = conciliacionDAO.findByNumeroOrden(numerOrden);
-        }  catch (Exception e) {
-        throw new BusinessException(e);
-    }
+        } catch (Exception e) {
+            throw new BusinessException(e);
+        }
         if (conciliacion == null)
-                throw new NotFoundException("No se encuentran datos para ese numero de orden.");
+            throw new NotFoundException("No se encuentran datos para ese numero de orden.");
         return conciliacion;
     }
 }

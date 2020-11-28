@@ -11,7 +11,7 @@ public class OrdenDetalle implements Serializable {
 
     private static final long serialVersionUID = -2222985674134742453L;
 
-    public OrdenDetalle(double masaAcumulada, double densidad, double temperatura, double caudal, long idOrden, Date fecha){
+    public OrdenDetalle(double masaAcumulada, double densidad, double temperatura, double caudal, long idOrden, Date fecha) {
         this.masaAcumulada = masaAcumulada;
         this.densidad = densidad;
         this.temperatura = temperatura;
@@ -20,7 +20,7 @@ public class OrdenDetalle implements Serializable {
         this.fecha = fecha;
     }
 
-    public OrdenDetalle(){
+    public OrdenDetalle() {
 
     }
 

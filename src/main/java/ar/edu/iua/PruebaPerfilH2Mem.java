@@ -8,11 +8,12 @@ import org.springframework.stereotype.Component;
 @Component
 @Profile("h2mem")
 public class PruebaPerfilH2Mem implements IPruebaPerfil {
-	private Logger log = LoggerFactory.getLogger(IPruebaPerfil.class);
-	@Override
-	public void mensaje() {
-		log.info("***** H2MEM *****");
-		
-	}
+    private Logger log = LoggerFactory.getLogger(IPruebaPerfil.class);
+
+    @Override
+    public void mensaje() {
+        log.info("***** H2MEM *****");
+
+    }
 
 }

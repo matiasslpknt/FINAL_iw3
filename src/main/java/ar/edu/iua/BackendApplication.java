@@ -11,25 +11,25 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 public class BackendApplication extends SpringBootServletInitializer implements CommandLineRunner {
-	private Logger log = LoggerFactory.getLogger(this.getClass());
+    private Logger log = LoggerFactory.getLogger(this.getClass());
 
-	public static void main(String[] args) {
-		SpringApplication.run(BackendApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BackendApplication.class, args);
+    }
 
-	@Value("${spring.datasource.url}")
-	private String springDatasourceUrl;
-
-
-	@Autowired
-	private IPruebaPerfil pruebaPerfil;
+    @Value("${spring.datasource.url}")
+    private String springDatasourceUrl;
 
 
-	@Override
-	public void run(String... args) throws Exception {
-		log.info("DataSource URL: {}", springDatasourceUrl);
-		pruebaPerfil.mensaje();
+    @Autowired
+    private IPruebaPerfil pruebaPerfil;
 
-	}
+
+    @Override
+    public void run(String... args) throws Exception {
+        log.info("DataSource URL: {}", springDatasourceUrl);
+        pruebaPerfil.mensaje();
+
+    }
 
 }

@@ -1,6 +1,7 @@
 package ar.edu.iua.business;
 
-import ar.edu.iua.business.exception.*;
+import ar.edu.iua.business.exception.BusinessException;
+import ar.edu.iua.business.exception.NotFoundException;
 import ar.edu.iua.model.Conciliacion;
 
 import java.util.List;

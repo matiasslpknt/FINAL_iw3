@@ -15,12 +15,12 @@ public interface OrdenRepository extends JpaRepository<Orden, Long> {
     @Modifying(flushAutomatically = true, clearAutomatically = true)
     @Transactional
     @Query(value = "UPDATE orden o SET o.caudal = ?2, o.densidad = ?3, o.temperatura = ?4, o.masa_acumulada = ?5, o.fecha_ultimo_almacenamiento = ?6 WHERE o.id = ?1", nativeQuery = true)
-    void actualizarOrdenSurtidorConFecha(long idOrden, double caudal , double densidad, double temperatura, double masaAcumulada, Date fechaUltimoAlmacenamiento);
+    void actualizarOrdenSurtidorConFecha(long idOrden, double caudal, double densidad, double temperatura, double masaAcumulada, Date fechaUltimoAlmacenamiento);
 
     @Modifying(flushAutomatically = true, clearAutomatically = true)
     @Transactional
     @Query(value = "UPDATE orden o SET o.caudal = ?2, o.densidad = ?3, o.temperatura = ?4, o.masa_acumulada = ?5 WHERE o.id = ?1", nativeQuery = true)
-    void actualizarOrdenSurtidor(long idOrden, double caudal , double densidad, double temperatura, double masaAcumulada);
+    void actualizarOrdenSurtidor(long idOrden, double caudal, double densidad, double temperatura, double masaAcumulada);
 
     @Query(value = "select MAX(id) from orden", nativeQuery = true)
     String getUltimoIdOrden();
@@ -30,7 +30,7 @@ public interface OrdenRepository extends JpaRepository<Orden, Long> {
     @Modifying(flushAutomatically = true, clearAutomatically = true)
     @Transactional
     @Query(value = "UPDATE orden p SET p.pesaje_inicial = ?2, p.fecha_pesaje_inicial = ?3, p.estado = ?4, p.password = ?5 WHERE p.numero_orden = ?1", nativeQuery = true)
-    void actualizarPesajeInicial(String idOrden, double peso , Date fechaPesaje, int estado, String password);
+    void actualizarPesajeInicial(String idOrden, double peso, Date fechaPesaje, int estado, String password);
 
     @Modifying(flushAutomatically = true, clearAutomatically = true)
     @Transactional
@@ -45,7 +45,7 @@ public interface OrdenRepository extends JpaRepository<Orden, Long> {
     @Modifying(flushAutomatically = true, clearAutomatically = true)
     @Transactional
     @Query(value = "UPDATE orden p SET p.pesaje_final = ?2, p.fecha_pesaje_final = ?3, p.estado = ?4 WHERE p.numero_orden = ?1", nativeQuery = true)
-    void actualizarPesajeFinal(String idOrden, double peso , Date fechaPesaje, int estado);
+    void actualizarPesajeFinal(String idOrden, double peso, Date fechaPesaje, int estado);
 
     @Modifying(flushAutomatically = true, clearAutomatically = true)
     @Transactional

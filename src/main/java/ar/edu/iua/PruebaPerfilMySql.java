@@ -8,11 +8,12 @@ import org.springframework.stereotype.Component;
 @Component
 @Profile("mysql")
 public class PruebaPerfilMySql implements IPruebaPerfil {
-	private Logger log = LoggerFactory.getLogger(IPruebaPerfil.class);
-	@Override
-	public void mensaje() {
-		log.info("***** MYSQL *****");
-		
-	}
+    private Logger log = LoggerFactory.getLogger(IPruebaPerfil.class);
+
+    @Override
+    public void mensaje() {
+        log.info("***** MYSQL *****");
+
+    }
 
 }

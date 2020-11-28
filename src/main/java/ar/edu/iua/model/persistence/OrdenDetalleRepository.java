@@ -13,7 +13,7 @@ public interface OrdenDetalleRepository extends JpaRepository<OrdenDetalle, Long
 
     @Transactional
     @Query(value = "INSERT INTO orden_detalle (caudal, densidad, id_orden, masa_acumulada, temperatura) VALUES (?2, ?3, ?1, ?5, ?4);", nativeQuery = true)
-    void guardarOrdenDetale(long idOrden, double caudal , double densidad, double temperatura, double masaAcumulada);
+    void guardarOrdenDetale(long idOrden, double caudal, double densidad, double temperatura, double masaAcumulada);
 
     List<OrdenDetalle> findAllByIdOrden(long idOrden);
 }

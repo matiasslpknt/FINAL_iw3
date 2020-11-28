@@ -3,7 +3,6 @@ package ar.edu.iua.business;
 import ar.edu.iua.business.exception.BusinessException;
 import ar.edu.iua.business.exception.NotFoundException;
 import ar.edu.iua.model.Conciliacion;
-import ar.edu.iua.model.Producto;
 import ar.edu.iua.model.persistence.ConciliacionRepository;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -18,10 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Optional;
-
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertSame;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -68,7 +64,7 @@ public class ConciliacionBusinessTest {
     }
 
     @Test(expected = ar.edu.iua.business.exception.NotFoundException.class)
-    public void testLoadNotFoundException() throws  BusinessException, NotFoundException  {
+    public void testLoadNotFoundException() throws BusinessException, NotFoundException {
         long id = 128;
         conciliacionBusiness.load(id);
         expectedEx.expect(ar.edu.iua.business.exception.NotFoundException.class);

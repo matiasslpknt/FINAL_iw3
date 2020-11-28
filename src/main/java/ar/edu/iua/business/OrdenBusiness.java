@@ -3,7 +3,6 @@ package ar.edu.iua.business;
 import ar.edu.iua.business.exception.*;
 import ar.edu.iua.model.*;
 import ar.edu.iua.model.persistence.OrdenRepository;
-import ar.edu.iua.rest.Constantes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,7 +122,7 @@ public class OrdenBusiness implements IOrdenBusiness {
             OrdenDetalle ordenDetalle = new OrdenDetalle(ordenSurtidorDTO.getMasaAcumulada(), densidad, ordenSurtidorDTO.getTemperatura(), caudal, orden.getId(), dateSurtidor);
             if (caudal > 0 && orden.getMasaAcumulada() < ordenSurtidorDTO.getMasaAcumulada() && ordenSurtidorDTO.getMasaAcumulada() > 0) {
                 if (orden.getFechaUltimoAlmacenamiento() != null) {
-                    if(orden.getTiempoAlmacenaje() != 0){
+                    if (orden.getTiempoAlmacenaje() != 0) {
                         if ((dateSurtidor.getTime() - orden.getFechaUltimoAlmacenamiento().getTime()) >= orden.getTiempoAlmacenaje()) {
                             ordenDetalleBusiness.save(ordenDetalle);
                             ordenDAO.actualizarOrdenSurtidorConFecha(orden.getId(), caudal, densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada(), dateSurtidor);
@@ -132,7 +131,7 @@ public class OrdenBusiness implements IOrdenBusiness {
                             ordenDAO.actualizarOrdenSurtidor(orden.getId(), caudal, densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada());
                             orden = load(orden.getId());
                         }
-                    }else{
+                    } else {
                         ordenDetalleBusiness.save(ordenDetalle);
                         ordenDAO.actualizarOrdenSurtidorConFecha(orden.getId(), caudal, densidad, ordenSurtidorDTO.getTemperatura(), ordenSurtidorDTO.getMasaAcumulada(), dateSurtidor);
                         orden = load(orden.getId());
@@ -341,7 +340,7 @@ public class OrdenBusiness implements IOrdenBusiness {
         return orden;
     }
 
-    public Conciliacion calcularConciliacion(long idOrden) throws BusinessException, NotFoundException{
+    public Conciliacion calcularConciliacion(long idOrden) throws BusinessException, NotFoundException {
         Conciliacion conciliacion = new Conciliacion();
         try {
             Orden orden = load(idOrden);
@@ -356,14 +355,14 @@ public class OrdenBusiness implements IOrdenBusiness {
             double temperatura = 0;
             double densidad = 0;
             double caudal = 0;
-            for(OrdenDetalle ordenAux : lista){
+            for (OrdenDetalle ordenAux : lista) {
                 temperatura += ordenAux.getTemperatura();
                 densidad += ordenAux.getDensidad();
                 caudal += ordenAux.getCaudal();
             }
-            double promTemperatura = temperatura/lista.size();
-            double promDensidad = densidad/lista.size();
-            double promCaudal = caudal/lista.size();
+            double promTemperatura = temperatura / lista.size();
+            double promDensidad = densidad / lista.size();
+            double promCaudal = caudal / lista.size();
             conciliacion.setTemperatura(promTemperatura);
             conciliacion.setDensidad(promDensidad);
             conciliacion.setCaudal(promCaudal);
