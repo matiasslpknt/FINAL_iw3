@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: ar.edu.iua.rest.ConciliacionRestControllerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in ar.edu.iua.rest.ConciliacionRestControllerTest
+initializationError  Time elapsed: 0.001 s  <<< ERROR!
+org.junit.runners.model.InvalidTestClassError: 
+Invalid test class 'ar.edu.iua.rest.ConciliacionRestControllerTest':
+  1. No runnable methods
+

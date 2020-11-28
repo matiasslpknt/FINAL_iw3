@@ -1,5 +1,9 @@
 package ar.edu.iua.model;
 
+import ar.edu.iua.model.DTO.ActualizacionMailDTO;
+import ar.edu.iua.model.DTO.OrdenSurtidorDTO;
+import ar.edu.iua.model.DTO.PesajeDTO;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -28,6 +32,18 @@ import java.util.Date;
                                 @ColumnResult(name = "p.pesaje_inicial", type = String.class)
                         },
                         targetClass = PesajeDTO.class
+                )
+        }
+)
+@SqlResultSetMapping(
+        name = "enviomail",
+        classes = {
+                @ConstructorResult(
+                        columns = {
+                                @ColumnResult(name = "p.idOrden", type = long.class),
+                                @ColumnResult(name = "p.envio_mail", type = int.class)
+                        },
+                        targetClass = ActualizacionMailDTO.class
                 )
         }
 )
@@ -89,6 +105,8 @@ public class Orden implements Serializable {
     private double pesajeFinal;
 
     private Date fechaPesajeFinal;
+
+    private int envioMail; //0 si tiene que enviar mail, 1 si no tiene que enviar mail
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -276,5 +294,13 @@ public class Orden implements Serializable {
 
     public void setFechaPesajeFinal(Date fechaPesajeFinal) {
         this.fechaPesajeFinal = fechaPesajeFinal;
+    }
+
+    public int getEnvioMail() {
+        return envioMail;
+    }
+
+    public void setEnvioMail(int envioMail) {
+        this.envioMail = envioMail;
     }
 }

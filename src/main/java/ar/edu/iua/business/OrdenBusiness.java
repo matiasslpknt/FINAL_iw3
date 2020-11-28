@@ -2,6 +2,9 @@ package ar.edu.iua.business;
 
 import ar.edu.iua.business.exception.*;
 import ar.edu.iua.model.*;
+import ar.edu.iua.model.DTO.ActualizacionMailDTO;
+import ar.edu.iua.model.DTO.OrdenSurtidorDTO;
+import ar.edu.iua.model.DTO.PesajeDTO;
 import ar.edu.iua.model.persistence.OrdenRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,6 +69,7 @@ public class OrdenBusiness implements IOrdenBusiness {
             orden.setPassword("");
             orden.setPesajeInicial(0);
             orden.setFechaPesaje(null);
+            orden.setEnvioMail(0);
             return ordenDAO.save(orden);
         } catch (Exception e) {
             throw new BusinessException(e);
@@ -165,6 +169,13 @@ public class OrdenBusiness implements IOrdenBusiness {
         }
         if (orden == null) {
             throw new NotFoundException("No se encontro ningun producto cn el filtro especificado.");
+        }
+        if(ordenSurtidorDTO.getTemperatura() >= 40 && orden.getEnvioMail() == 0){
+            String titulo = "Alerta de temperatura ALTA.";
+            String mensaje = "La temperatura del surtidor superó los 40 grados. Temperatura actual: " + ordenSurtidorDTO.getTemperatura();
+            mailService.enviarCorreo(orden.getCliente().getEmail(), titulo, mensaje);
+            ordenDAO.actualizarEnvioMail(orden.getId(), 1);
+            orden = load(orden.getId());
         }
         return orden;
     }
@@ -339,5 +350,21 @@ public class OrdenBusiness implements IOrdenBusiness {
 
     public double calcularPromedio(double valor, double cantidad){
         return (valor/cantidad);
+    }
+
+    @Override
+    public Orden actualizacionEnvioMail(ActualizacionMailDTO actualizacionMailDTO) throws BusinessException, NotFoundException {
+        Orden orden = null;
+        try {
+            ordenDAO.actualizarEnvioMail(actualizacionMailDTO.getIdOrden(), actualizacionMailDTO.getEnvioMail());
+            orden = load(actualizacionMailDTO.getIdOrden());
+        } catch (BusinessException e) {
+            log.error(e.getMessage(), e);
+            throw new BusinessException(e);
+        }
+        if(orden == null){
+            throw new NotFoundException("Orden no encontrada con id " + actualizacionMailDTO.getIdOrden());
+        }
+        return orden;
     }
 }

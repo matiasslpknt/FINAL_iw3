@@ -1,9 +1,10 @@
 package ar.edu.iua.business;
 
 import ar.edu.iua.business.exception.*;
+import ar.edu.iua.model.DTO.ActualizacionMailDTO;
 import ar.edu.iua.model.Orden;
-import ar.edu.iua.model.OrdenSurtidorDTO;
-import ar.edu.iua.model.PesajeDTO;
+import ar.edu.iua.model.DTO.OrdenSurtidorDTO;
+import ar.edu.iua.model.DTO.PesajeDTO;
 
 import java.util.List;
 
@@ -29,4 +30,6 @@ public interface IOrdenBusiness {
     public Orden cerrarOrdenPorNumeroOrden(OrdenSurtidorDTO numeroOrden) throws BusinessException, NotFoundException, InvalidStateOrderException;
 
     public Orden actualizarPesajeFinal(PesajeDTO pesajeDTO) throws BusinessException, NotFoundException, InvalidStateOrderException;
+
+    public Orden actualizacionEnvioMail(ActualizacionMailDTO actualizacionMailDTO) throws BusinessException, NotFoundException;
 }

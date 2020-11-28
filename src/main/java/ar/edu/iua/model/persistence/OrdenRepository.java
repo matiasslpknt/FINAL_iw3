@@ -51,4 +51,9 @@ public interface OrdenRepository extends JpaRepository<Orden, Long> {
     @Transactional
     @Query(value = "UPDATE orden o SET o.conciliacion_id = ?2 WHERE o.id = ?1", nativeQuery = true)
     void actualizarConciliacion(long idOrden, long idConciliacion);
+
+    @Modifying(flushAutomatically = true, clearAutomatically = true)
+    @Transactional
+    @Query(value = "UPDATE orden e SET e.envio_mail = ?2 WHERE e.id = ?1", nativeQuery = true)
+    void actualizarEnvioMail(long idOrden, int envio_mail);
 }

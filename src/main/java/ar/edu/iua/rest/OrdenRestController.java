@@ -2,9 +2,10 @@ package ar.edu.iua.rest;
 
 import ar.edu.iua.business.IOrdenBusiness;
 import ar.edu.iua.business.exception.*;
+import ar.edu.iua.model.DTO.ActualizacionMailDTO;
 import ar.edu.iua.model.Orden;
-import ar.edu.iua.model.OrdenSurtidorDTO;
-import ar.edu.iua.model.PesajeDTO;
+import ar.edu.iua.model.DTO.OrdenSurtidorDTO;
+import ar.edu.iua.model.DTO.PesajeDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -146,6 +147,20 @@ public class OrdenRestController extends BaseRestController {
             return new ResponseEntity<Orden>(HttpStatus.NOT_FOUND);
         } catch (InvalidStateOrderException e) {
             return new ResponseEntity<Orden>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping(value = "mail", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Orden> actualizacionEnvioMail(@RequestBody ActualizacionMailDTO actualizacionMailDTO) {
+        Orden p = null;
+        try {
+            p = ordenBusiness.actualizacionEnvioMail(actualizacionMailDTO);
+            return new ResponseEntity<Orden>(p, HttpStatus.OK);
+        } catch (BusinessException e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<Orden>(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (NotFoundException e) {
+            return new ResponseEntity<Orden>(HttpStatus.NOT_FOUND);
         }
     }
 }

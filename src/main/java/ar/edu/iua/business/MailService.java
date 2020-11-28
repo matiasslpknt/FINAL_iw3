@@ -15,12 +15,12 @@ public class MailService {
         this.javaMailSender = javaMailSender;
     }
 
-    public void enviarCorreo(String email){
+    public void enviarCorreo(String destinatario, String titulo, String mensaje){
         SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setTo(email);
+        mail.setTo(destinatario);
         mail.setFrom("matiasslpknt08@gmail.com");
-        mail.setSubject("Mail de prueba");
-        mail.setText("Esto es una prueba");
+        mail.setSubject(titulo);
+        mail.setText(mensaje);
 
         javaMailSender.send(mail);
     }
