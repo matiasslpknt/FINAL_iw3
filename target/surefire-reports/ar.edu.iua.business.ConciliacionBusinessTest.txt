@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: ar.edu.iua.business.ConciliacionBusinessTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.617 s <<< FAILURE! - in ar.edu.iua.business.ConciliacionBusinessTest
+testLoadSuccess  Time elapsed: 0.184 s  <<< ERROR!
+ar.edu.iua.business.exception.BusinessException: ar.edu.iua.business.exception.NotFoundException: No se encontro ningun producto cn el filtro especificado.
+	at ar.edu.iua.business.ConciliacionBusinessTest.testLoadSuccess(ConciliacionBusinessTest.java:68)
+Caused by: ar.edu.iua.business.exception.NotFoundException: No se encontro ningun producto cn el filtro especificado.
+	at ar.edu.iua.business.ConciliacionBusinessTest.testLoadSuccess(ConciliacionBusinessTest.java:68)
+

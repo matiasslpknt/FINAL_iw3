@@ -33,7 +33,7 @@ public class ConciliacionBusiness implements IConciliacionBusiness {
             throw new BusinessException(e);
         }
         if (!op.isPresent())
-            throw new NotFoundException("No se encuentra el producto id=" + id);
+            throw new NotFoundException("No se encuentra la conciliacion id=" + id);
         return op.get();
     }
 
@@ -70,8 +70,7 @@ public class ConciliacionBusiness implements IConciliacionBusiness {
     public Conciliacion getConciliacionByNumeroOrden(String numerOrden) throws BusinessException, NotFoundException {
         Conciliacion conciliacion = null;
         try {
-            Orden orden = ordenBusiness.findByNumeroOrden(numerOrden);
-            conciliacion = load(orden.getId());
+            conciliacion = conciliacionDAO.findByNumeroOrden(numerOrden);
         }  catch (Exception e) {
         throw new BusinessException(e);
     }
