@@ -27,6 +27,8 @@ public class OrdenBusiness implements IOrdenBusiness {
     private OrdenDetalleBusiness ordenDetalleBusiness;
     @Autowired
     private ConciliacionBusiness conciliacionBusiness;
+    @Autowired
+    private MailService mailService;
 
     @Override
     public Orden load(Long id) throws BusinessException, NotFoundException {

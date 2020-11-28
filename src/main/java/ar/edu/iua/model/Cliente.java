@@ -21,6 +21,7 @@ public class Cliente implements Serializable {
     private String apellido;
     private long dni;
     private String telefono;
+    private String email;
 
 
     @OneToMany(targetEntity = Orden.class, mappedBy = "cliente", fetch = FetchType.LAZY)
@@ -78,5 +79,13 @@ public class Cliente implements Serializable {
 
     public void setOrdenList(List<Orden> ordenList) {
         this.ordenList = ordenList;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
