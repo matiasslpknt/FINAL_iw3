@@ -35,13 +35,11 @@ public class ConciliacionBusinessTest {
     @MockBean
     ConciliacionRepository conciliacionDAOMock;
 
-    private static String description = "Lomito2";
     private static Conciliacion conciliacion1;
 
 
     @BeforeClass
     public static void setup() {
-
         conciliacion1 = new Conciliacion();
         conciliacion1.setId(1);
         conciliacion1.setCaudal(12);

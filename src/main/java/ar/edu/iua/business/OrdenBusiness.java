@@ -262,7 +262,7 @@ public class OrdenBusiness implements IOrdenBusiness {
         Orden orden = null;
         try {
             orden = load(idOrden);
-            if (orden.getEstado() == 3) {
+            if (orden.getEstado() >= 3) {
                 throw new InvalidStateOrderException("La orden ya fue cerrada.");
             } else if (orden.getEstado() == 2) {
                 ordenDAO.cerrarOrden(idOrden);
@@ -288,7 +288,7 @@ public class OrdenBusiness implements IOrdenBusiness {
         Orden orden = null;
         try {
             orden = findByNumeroOrden(ordenDTO.getIdOrden());
-            if (orden.getEstado() == 3) {
+            if (orden.getEstado() >= 3) {
                 throw new InvalidStateOrderException("La orden ya fue cerrada.");
             } else if (orden.getEstado() == 2) {
                 ordenDAO.cerrarOrdenPorNumeroOrden(ordenDTO.getIdOrden());
