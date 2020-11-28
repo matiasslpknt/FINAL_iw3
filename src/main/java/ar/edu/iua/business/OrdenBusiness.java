@@ -180,48 +180,6 @@ public class OrdenBusiness implements IOrdenBusiness {
         return order;
     }
 
-//    private String generarNumeroOrden() {
-//        String idUltimaOrdenSt = ordenDAO.getUltimoIdOrden();
-//        if (idUltimaOrdenSt == null) {
-//            return "000001";
-//        }
-//        int idUltimaOrden = Integer.parseInt(idUltimaOrdenSt);
-//        int nuevoNumeroOrden = idUltimaOrden + 1;
-//        String numeroOrden = "";
-//        if (nuevoNumeroOrden <= 9) {
-//            numeroOrden = "00000" + nuevoNumeroOrden;
-//        } else if (nuevoNumeroOrden > 9 && nuevoNumeroOrden < 99) {
-//            numeroOrden = "0000" + nuevoNumeroOrden;
-//        } else if (nuevoNumeroOrden > 99 && nuevoNumeroOrden < 999) {
-//            numeroOrden = "000" + nuevoNumeroOrden;
-//        } else if (nuevoNumeroOrden > 999 && nuevoNumeroOrden < 9999) {
-//            numeroOrden = "00" + nuevoNumeroOrden;
-//        } else if (nuevoNumeroOrden > 9999 && nuevoNumeroOrden < 99999) {
-//            numeroOrden = "0" + nuevoNumeroOrden;
-//        } else {
-//            numeroOrden = "" + nuevoNumeroOrden;
-//        }
-//        return numeroOrden;
-//    }
-
-    private String getNumeroOrden(String orden) {
-        String ordenNueva = "";
-        if (orden.length() == 1) {
-            ordenNueva = "00000" + orden;
-        } else if (orden.length() == 2) {
-            ordenNueva = "0000" + orden;
-        } else if (orden.length() == 3) {
-            ordenNueva = "000" + orden;
-        } else if (orden.length() == 4) {
-            ordenNueva = "00" + orden;
-        } else if (orden.length() == 5) {
-            ordenNueva = "0" + orden;
-        } else if (orden.length() >= 6) {
-            ordenNueva = "" + orden;
-        }
-        return ordenNueva;
-    }
-
     @Override
     public Orden actualizarPesajeInicial(PesajeDTO pesajeDTO) throws BusinessException, NotFoundException, InvalidStateOrderException {
         Orden orden = null;
@@ -247,7 +205,7 @@ public class OrdenBusiness implements IOrdenBusiness {
         return orden;
     }
 
-    public static String generarRandomPassword(int len) {
+    public String generarRandomPassword(int len) {
         final String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         SecureRandom random = new SecureRandom();
         StringBuilder sb = new StringBuilder();
@@ -360,9 +318,9 @@ public class OrdenBusiness implements IOrdenBusiness {
                 densidad += ordenAux.getDensidad();
                 caudal += ordenAux.getCaudal();
             }
-            double promTemperatura = temperatura / lista.size();
-            double promDensidad = densidad / lista.size();
-            double promCaudal = caudal / lista.size();
+            double promTemperatura = calcularPromedio(temperatura, lista.size());
+            double promDensidad = calcularPromedio(densidad, lista.size());
+            double promCaudal = calcularPromedio(caudal, lista.size());
             conciliacion.setTemperatura(promTemperatura);
             conciliacion.setDensidad(promDensidad);
             conciliacion.setCaudal(promCaudal);
@@ -375,5 +333,9 @@ public class OrdenBusiness implements IOrdenBusiness {
         }
 
         return conciliacion;
+    }
+
+    public double calcularPromedio(double valor, double cantidad){
+        return (valor/cantidad);
     }
 }

@@ -23,12 +23,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6a886b0-8664-4cef-a5e9-fd9b702d9a96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ar/edu/iua/business/OrdenBusinessTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__info_cukes_cucumber_core_1_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__info_cukes_cucumber_html_0_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__info_cukes_cucumber_java_1_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__info_cukes_cucumber_junit_1_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__info_cukes_cucumber_jvm_deps_1_0_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__info_cukes_gherkin_2_12_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ar/edu/iua/stepDefinitions/MyStepdefs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/Orden.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/iw3_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/iw3_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iw3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/iw3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/iua/business/OrdenBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/iua/business/OrdenBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ar/edu/iua/business/ConciliacionBusinessTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ar/edu/iua/business/ConciliacionBusinessTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ar/edu/iua/business/ConciliacionBusiness.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ar/edu/iua/business/ConciliacionBusiness.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ar/edu/iua/business/OrdenBusiness.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ar/edu/iua/business/OrdenBusiness.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ar/edu/iua/rest/ConciliacionesRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ar/edu/iua/rest/ConciliacionesRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ar.edu.iua.business.ConciliacionBusinessTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ar.edu.iua.business.ConciliacionBusinessTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/ar.edu.iua.business.ConciliacionBusinessTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ar.edu.iua.business.ConciliacionBusinessTest.txt" afterDir="false" />
     </list>
@@ -72,7 +83,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jpa_original/iw3-2020" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/ar/edu/iua/stepDefinitions" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -94,30 +105,75 @@
       <recent name="ar.edu.iua.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OrdenBusinessTest.testCerrarOrdenInvalidStateOrderException">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.BackendApplication">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrdenBusinessTest.testCerrarOrden" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature: Orden" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="1.2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/resources/Orden.feature" />
+      <option name="GLUE" value="ar.edu.iua.stepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
       <module name="iw3" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvmSMFormatter --monochrome" />
+      <option name="SUGGESTED_NAME" value="Feature: Orden" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ar.edu.iua.business.*" />
+          <option name="PATTERN" value="cucumber.api.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.iua.business" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.iua.business.OrdenBusinessTest" />
-      <option name="METHOD_NAME" value="testCerrarOrden" />
-      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Prueba de calculo de promedios" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="1.2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/resources/Orden.feature" />
+      <option name="GLUE" value="ar.edu.iua.stepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="iw3" />
+      <option name="NAME_FILTER" value="^Prueba de calculo de promedios$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvmSMFormatter --monochrome --name &quot;^Prueba de calculo de promedios$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Prueba de calculo de promedios" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Prueba de tamanio correcto de password" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="1.2" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/resources/Orden.feature" />
+      <option name="GLUE" value="ar.edu.iua.stepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="iw3" />
+      <option name="NAME_FILTER" value="^Prueba de tamanio correcto de password$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvmSMFormatter --monochrome --name &quot;^Prueba de tamanio correcto de password$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Prueba de tamanio correcto de password" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -133,22 +189,6 @@
       <option name="PACKAGE_NAME" value="ar.edu.iua.business" />
       <option name="MAIN_CLASS_NAME" value="ar.edu.iua.business.OrdenBusinessTest" />
       <option name="METHOD_NAME" value="testCerrarOrdenInvalidStateOrderException" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrdenBusinessTest.testCerrarOrdenPorNumeroOrden" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="iw3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.iua.business.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.iua.business" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.iua.business.OrdenBusinessTest" />
-      <option name="METHOD_NAME" value="testCerrarOrdenPorNumeroOrden" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -170,22 +210,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrdenBusinessTest.testLoadNotFoundException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="iw3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.iua.business.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.iua.business" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.iua.business.OrdenBusinessTest" />
-      <option name="METHOD_NAME" value="testLoadNotFoundException" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="iw3" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ar.edu.iua.BackendApplication" />
@@ -197,11 +221,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber Java.Feature: Orden" />
+        <item itemvalue="Cucumber Java.Scenario: Prueba de calculo de promedios" />
+        <item itemvalue="Cucumber Java.Scenario: Prueba de tamanio correcto de password" />
         <item itemvalue="JUnit.OrdenBusinessTest.testCerrarOrdenInvalidStateOrderException" />
         <item itemvalue="JUnit.OrdenBusinessTest.testFindByNumeroOrdenSuccess" />
-        <item itemvalue="JUnit.OrdenBusinessTest.testCerrarOrden" />
-        <item itemvalue="JUnit.OrdenBusinessTest.testCerrarOrdenPorNumeroOrden" />
-        <item itemvalue="JUnit.OrdenBusinessTest.testLoadNotFoundException" />
       </list>
     </recent_temporary>
   </component>
@@ -253,7 +277,8 @@
       <workItem from="1605672403441" duration="942000" />
       <workItem from="1605792298515" duration="16000" />
       <workItem from="1606574763521" duration="133000" />
-      <workItem from="1606574914854" duration="7403000" />
+      <workItem from="1606574914854" duration="8554000" />
+      <workItem from="1606590748618" duration="2207000" />
     </task>
     <servers />
   </component>
@@ -306,49 +331,49 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604442215047" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1606575166673">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1606591259996">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606575166673" />
-    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1606582281748">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606591259996" />
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1606592778068">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606582281748" />
+    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606592778068" />
     <state width="1802" height="394" key="GridCell.Tab.0.bottom/72.27.1848.1413@72.27.1848.1413" timestamp="1605237323454" />
-    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1606582281748">
+    <state width="1877" height="284" key="GridCell.Tab.0.center" timestamp="1606592778068">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606582281748" />
+    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606592778068" />
     <state width="1802" height="394" key="GridCell.Tab.0.center/72.27.1848.1413@72.27.1848.1413" timestamp="1605237323454" />
-    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1606582281748">
+    <state width="1877" height="284" key="GridCell.Tab.0.left" timestamp="1606592778068">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606582281748" />
+    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606592778068" />
     <state width="1802" height="394" key="GridCell.Tab.0.left/72.27.1848.1413@72.27.1848.1413" timestamp="1605237323453" />
-    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1606582281748">
+    <state width="1877" height="284" key="GridCell.Tab.0.right" timestamp="1606592778068">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606582281748" />
+    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606592778068" />
     <state width="1802" height="394" key="GridCell.Tab.0.right/72.27.1848.1413@72.27.1848.1413" timestamp="1605237323454" />
-    <state width="1877" height="284" key="GridCell.Tab.1.bottom" timestamp="1606577470238">
+    <state width="1877" height="284" key="GridCell.Tab.1.bottom" timestamp="1606592778069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606577470238" />
+    <state width="1877" height="284" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606592778069" />
     <state width="1802" height="394" key="GridCell.Tab.1.bottom/72.27.1848.1413@72.27.1848.1413" timestamp="1605237323455" />
-    <state width="1877" height="284" key="GridCell.Tab.1.center" timestamp="1606577470238">
+    <state width="1877" height="284" key="GridCell.Tab.1.center" timestamp="1606592778069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606577470238" />
+    <state width="1877" height="284" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606592778069" />
     <state width="1802" height="394" key="GridCell.Tab.1.center/72.27.1848.1413@72.27.1848.1413" timestamp="1605237323455" />
-    <state width="1877" height="284" key="GridCell.Tab.1.left" timestamp="1606577470238">
+    <state width="1877" height="284" key="GridCell.Tab.1.left" timestamp="1606592778069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606577470238" />
+    <state width="1877" height="284" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606592778069" />
     <state width="1802" height="394" key="GridCell.Tab.1.left/72.27.1848.1413@72.27.1848.1413" timestamp="1605237323454" />
-    <state width="1877" height="284" key="GridCell.Tab.1.right" timestamp="1606577470238">
+    <state width="1877" height="284" key="GridCell.Tab.1.right" timestamp="1606592778069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606577470238" />
+    <state width="1877" height="284" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606592778069" />
     <state width="1802" height="394" key="GridCell.Tab.1.right/72.27.1848.1413@72.27.1848.1413" timestamp="1605237323455" />
     <state width="1877" height="348" key="GridCell.Tab.2.bottom" timestamp="1603508565635">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -392,6 +417,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605190446396" />
+    <state x="703" y="441" key="org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog" timestamp="1606591261318">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="703" y="441" key="org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606591261318" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1600879977348">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
