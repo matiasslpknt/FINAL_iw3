@@ -13,5 +13,5 @@
 
 FROM openjdk:8
 ADD target/iw3.jar iw3.jar
-EXPOSE 8080
+EXPOSE 8081
 ENTRYPOINT ["java", "-jar" , "iw3.jar"]
