@@ -27,7 +27,7 @@
     <name>backend</name>
     <description>Aplicación de IW3</description>
 
-    <packaging>${packaging.type}</packaging>
+    <packaging>jar</packaging>
 
     <properties>
         <java.version>8</java.version>
