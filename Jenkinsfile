@@ -19,8 +19,6 @@ pipeline {
                 sh "docker system prune"
                 sh "docker build -t matiasslpknt1/iw3:0.0.6.RELEASE ."
                 sh "docker push matiasslpknt1/iw3:0.0.6.RELEASE"
-                sh "docker run -p 3307:3306 --name=mysql -d mysql:latest"
-                sh "docker run -p 8081:8080 --name=iw3 -d matiasslpknt1/iw3:0.0.6.RELEASE"
             }
         }
     }
