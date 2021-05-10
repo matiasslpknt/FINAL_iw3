@@ -5,19 +5,20 @@ pipeline {
         stage('Install') {
             steps {
                 echo 'INSTALLING...'
-                sh "mvn install"
+                sh 'mvn install'
             }
         }
         stage('Test') {
             steps {
                 echo 'TESTING...'
-                sh "mvn test"
+                sh 'mvn test'
             }
         }
         stage('Deploying') {
             steps {
                 echo 'DEPLOYING...'
-                sh "docker-compose -f docker-compose.yml up"
+                sh 'docker-compose build'
+                sh 'docker-compose up -d'
             }
         }
     }
