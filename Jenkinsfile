@@ -3,6 +3,7 @@ pipeline {
     tools {
         maven 'iw3_maven'
         jdk 'iw3_jdk'
+        docker 'iw3_docker'
     }
     stages {
         stage('Install') {
