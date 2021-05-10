@@ -5,19 +5,19 @@ pipeline {
         stage('Install') {
             steps {
                 echo 'INSTALLING...'
-                sh 'mvn install'
+                mvn install
             }
         }
         stage('Test') {
             steps {
                 echo 'TESTING...'
-                sh 'mvn test'
+                mvn test
             }
         }
         stage('Deploying') {
             steps {
                 echo 'DEPLOYING...'
-                sh 'mvn spring-boot:run -Dspring-boot.run.profiles=mysql'
+                mvn spring-boot:run -Dspring-boot.run.profiles=mysql
             }
         }
     }

@@ -28,16 +28,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6a886b0-8664-4cef-a5e9-fd9b702d9a96" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/iw3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/iw3.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/iw3.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/iw3.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ar.edu.iua.business.ConciliacionBusinessTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ar.edu.iua.business.ConciliacionBusinessTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ar.edu.iua.business.OrdenBusinessTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ar.edu.iua.business.OrdenBusinessTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ar.edu.iua.business.ConciliacionBusinessTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ar.edu.iua.business.ConciliacionBusinessTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ar.edu.iua.business.OrdenBusinessTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ar.edu.iua.business.OrdenBusinessTest.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +259,7 @@
       <workItem from="1606595592401" duration="8506000" />
       <workItem from="1620509389599" duration="11617000" />
       <workItem from="1620574691523" duration="9331000" />
-      <workItem from="1620662524837" duration="752000" />
+      <workItem from="1620662524837" duration="1078000" />
     </task>
     <servers />
   </component>
