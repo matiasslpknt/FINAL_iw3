@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven 3.8.1'
-        jdk 'jdk8'
+        maven 'iw3_maven'
+        jdk 'iw3_jdk'
     }
     stages {
         stage('Install') {
