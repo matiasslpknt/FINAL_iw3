@@ -6,23 +6,11 @@ pipeline {
         dockerTool 'iw3_docker'
     }
     stages {
-        stage('Install') {
-            steps {
-                echo 'INSTALLING...'
-                sh "mvn install"
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'TESTING...'
-                sh "mvn test"
-            }
-        }
         stage('Deploying') {
             steps {
                 echo 'DEPLOYING...'
-                sh "docker-compose build"
-                sh "docker-compose up -d"
+                sh "docker run -p 3307:3306 -d mysql:latest"
+                sh "docker run -p 8081:8080 -d matiasslpknt1/iw3:0.0.6.RELEASE"
             }
         }
     }
