@@ -17,7 +17,7 @@ pipeline {
         stage('Deploying') {
             steps {
                 echo 'DEPLOYING...'
-                sh "mvn spring-boot:run -Dspring-boot.run.profiles=mysql"
+                sh "docker-compose -f docker-compose.yml up"
             }
         }
     }
