@@ -5,13 +5,14 @@ pipeline {
         jdk 'iw3_jdk'
         dockerTool 'iw3_docker'
     }
-    stage('Install') {
-                steps {
-                    echo 'INSTALLING...'
-                    sh "mvn install"
-                }
-            }
+
     stages {
+        stage('Install') {
+            steps {
+                echo 'INSTALLING...'
+                sh "mvn install"
+            }
+        }
         stage('Deploying') {
             steps {
                 echo 'DEPLOYING...'
