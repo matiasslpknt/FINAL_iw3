@@ -5,7 +5,6 @@ pipeline {
         jdk 'iw3_jdk'
         dockerTool 'iw3_docker'
     }
-    
     stages {
         stage('Install') {
             steps {
@@ -16,9 +15,7 @@ pipeline {
         stage('Deploying') {
             steps {
                 echo 'DEPLOYING...'
-                sh "docker system prune"
                 sh "docker build -t matiasslpknt1/iw3:0.0.6.RELEASE ."
-//                 sh "docker login -u matiasslpknt1 -p Mati.3269"
                 sh "docker push matiasslpknt1/iw3:0.0.6.RELEASE"
             }
         }
