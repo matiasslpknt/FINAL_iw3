@@ -17,7 +17,7 @@ pipeline {
                 echo 'DEPLOYING...'
                 sh "docker system prune"
                 sh "docker build -t matiasslpknt1/iw3:0.0.6.RELEASE ."
-                sh "docker login -u matiasslpknt08@gmail.com -p Mati.3269"
+                sh "docker login -u matiasslpknt1 -p Mati.3269"
                 sh "docker push matiasslpknt1/iw3:0.0.6.RELEASE"
             }
         }
