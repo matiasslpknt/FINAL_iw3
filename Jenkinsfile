@@ -5,7 +5,6 @@ pipeline {
         jdk 'iw3_jdk'
         dockerTool 'iw3_docker'
     }
-
     stages {
         stage('Install') {
             steps {
