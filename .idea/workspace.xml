@@ -30,6 +30,7 @@
     <list default="true" id="e6a886b0-8664-4cef-a5e9-fd9b702d9a96" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +264,7 @@
       <workItem from="1620684202511" duration="322000" />
       <workItem from="1620684955694" duration="1008000" />
       <workItem from="1620694518323" duration="171000" />
-      <workItem from="1620695325714" duration="870000" />
+      <workItem from="1620695325714" duration="2680000" />
     </task>
     <servers />
   </component>
