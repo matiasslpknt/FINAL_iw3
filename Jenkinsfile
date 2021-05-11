@@ -12,7 +12,7 @@ pipeline {
                 sh "mvn install"
             }
         }
-        stage('Deploying') {
+        stage('Deploy') {
             steps {
                 echo 'DEPLOYING...'
                 sh "docker build -t matiasslpknt1/iw3:0.0.6.RELEASE ."
