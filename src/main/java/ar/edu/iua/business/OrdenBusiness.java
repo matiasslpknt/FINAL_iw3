@@ -70,6 +70,7 @@ public class OrdenBusiness implements IOrdenBusiness {
             orden.setPesajeInicial(0);
             orden.setFechaPesaje(null);
             orden.setEnvioMail(0);
+
             return ordenDAO.save(orden);
         } catch (Exception e) {
             throw new BusinessException(e);
