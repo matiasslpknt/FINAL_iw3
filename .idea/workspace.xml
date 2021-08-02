@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="606b90ad-575a-4bcf-a5f7-88039e7f82de" name="Default Changelist" comment="se soluciona problema de cisternas">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ar/edu/iua/model/persistence/ChoferRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ar/edu/iua/model/persistence/ClienteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ar/edu/iua/rest/ChoferRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="606b90ad-575a-4bcf-a5f7-88039e7f82de" name="Default Changelist" comment="modificacion para jenkins">
       <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +86,7 @@
       <workItem from="1627863034373" duration="160000" />
       <workItem from="1627863300025" duration="85000" />
       <workItem from="1627918433688" duration="2980000" />
-      <workItem from="1627928018009" duration="112000" />
+      <workItem from="1627928018009" duration="404000" />
     </task>
     <task id="LOCAL-00001" summary="se soluciona problema de cisternas">
       <created>1627919960101</created>
@@ -99,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627919960101</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="modificacion para jenkins">
+      <created>1627928338239</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1627928338239</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +122,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="se soluciona problema de cisternas" />
-    <option name="LAST_COMMIT_MESSAGE" value="se soluciona problema de cisternas" />
+    <MESSAGE value="modificacion para jenkins" />
+    <option name="LAST_COMMIT_MESSAGE" value="modificacion para jenkins" />
   </component>
 </project>
