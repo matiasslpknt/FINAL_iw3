@@ -4,7 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4df09ddd-c385-4cac-9728-726298f7eec6" name="Default Changelist" comment="">
+    <list default="true" id="4df09ddd-c385-4cac-9728-726298f7eec6" name="Default Changelist" comment="version final 1.0">
+      <change afterPath="$PROJECT_DIR$/docker-config/spring" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/cargar_usuarios.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/public/assets/camion.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/public/assets/producto.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/api/conciliation/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/api/conciliation/routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/close-order-question-warning/CloseOrderQuestionWarning.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/close-order-question-warning/CloseOrderQuestionWarningStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/initial-weighing/InitialWeighing.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/initial-weighing/InitialWeighingStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/load-info/LoadInfo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/load-info/LoadInfoStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/load-pump-password-input/LoadPumpPasswordInput.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/load-pump-password-input/LoadPumpPasswordInputStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/order-conciliation/OrderConciliation.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/order-conciliation/OrderConciliationStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/post-final-weighing-message/PostFinalWeighingMessage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/post-final-weighing-message/PostFinalWeighingMessageStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/post-initial-weighing-message/PostInitialWeighingMessage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/post-initial-weighing-message/PostInitialWeighingMessageStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/update-order-email-send/UpdateOrderEmailSend.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/update-order-email-send/UpdateOrderEmailSendStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/user-info/UserInfo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/user-info/UserInfoStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/context/orders-load/OrdersLoad.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/context/orders-load/reducer/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/context/orders-load/reducer/orders-load-actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/context/orders-load/reducer/orders-load-state.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/model/Role.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/model/dto/PumpOrderData.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/model/dto/UpdateEmailSendData.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/model/dto/WeighingData.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/service/conciliationService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/utils/function-utils.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/utils/order-utils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/utils/user-utils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/orders/order-common/OrderCommon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/orders/order-detail/OrderDetailStyles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
@@ -13,7 +52,7 @@
       <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cargar_usuarios.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-config/spring/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-config/spring/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/SpringDockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iw3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/iw3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/iua/business/OrdenBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/iua/business/OrdenBusiness.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/iua/model/Orden.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/iua/model/Orden.java" afterDir="false" />
@@ -95,6 +134,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -132,8 +172,16 @@
       <option name="presentableId" value="Default" />
       <updated>1627994963112</updated>
       <workItem from="1627994965961" duration="1952000" />
-      <workItem from="1627999538972" duration="885000" />
+      <workItem from="1627999538972" duration="1412000" />
     </task>
+    <task id="LOCAL-00001" summary="version final 1.0">
+      <created>1628001060409</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1628001060409</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,5 +210,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="version final 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="version final 1.0" />
   </component>
 </project>

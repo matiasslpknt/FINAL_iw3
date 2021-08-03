@@ -9,7 +9,7 @@ pipeline {
         stage('Install') {
             steps {
                 echo 'INSTALLING...'
-                sh "mvn install"
+                sh "rm -rf target && mvn -Dmaven.test.skip=true -Dbuild=jar package && cp target/iw3.jar docker-config/spring"
             }
         }
         stage('Deploy') {
