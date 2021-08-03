@@ -12,6 +12,7 @@ const useStyles = makeStyles(() =>
     },
     sectionTitle: {
       display: 'flex',
+      justifyContent: 'space-between',
       alignItems: 'center',
       padding: '0 2rem',
       height: '90px'
@@ -67,7 +68,7 @@ const useStyles = makeStyles(() =>
       fontSize: '13px',
       color: '#888'
     },
-    loadingSm: { height: '100%', margin: '0 1rem' }
+    loadingSm: { width: '100%', height: '100vh', marginLeft: '2rem' }
   })
 )
 

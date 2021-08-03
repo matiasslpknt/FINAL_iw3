@@ -3,7 +3,6 @@ import { Suspense } from 'react'
 import { Switch } from 'react-router-dom'
 import { CustomPrivateRouteProps, ROUTES } from './routes'
 
-import Loading from 'src/components/loading/Loading'
 import PrivateRoute from './PrivateRoute'
 import { HTTP_STATUS_CODE } from 'src/api/http-status-codes'
 import { useAuth } from 'src/context/auth/AuthContext'
@@ -11,6 +10,7 @@ import useLocalStorage, { LS_KEYS } from 'src/hooks/useLocalStorage'
 import { ActionType } from '../../context/auth/reducer/auth-actions'
 
 import Axios from 'axios'
+import { TIMEOUT_500_MS } from 'src/utils/config-utils'
 
 const LoggedUserRouter = () => {
   const [, setToken] = useLocalStorage(LS_KEYS.AUTH_TOKEN, '')
@@ -34,11 +34,14 @@ const LoggedUserRouter = () => {
   const handleLogout = () => {
     dispatch({ type: ActionType.ValidateCredentials })
     setToken(undefined)
-    dispatch({ type: ActionType.Logout })
+
+    setTimeout(() => {
+      dispatch({ type: ActionType.Logout })
+    }, TIMEOUT_500_MS)
   }
 
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<span>Cargando...</span>}>
       <Switch>
         {Object.values(ROUTES.PrivateRoutes).map(
           (ROUTE: CustomPrivateRouteProps) => (
@@ -48,6 +51,8 @@ const LoggedUserRouter = () => {
               exact
               path={ROUTE.pathUrl()}
               component={ROUTE.component}
+              hasRenderCondition={ROUTE.hasRenderCondition}
+              renderCondition={ROUTE.renderCondition}
             />
           )
         )}

@@ -41,7 +41,7 @@ const CreatingNewOrder = () => {
             dni: state.truckData.chofer.dni,
             telefono: state.truckData.chofer.telefono
           },
-          cisternaList: state.truckData.cisternaList
+          cisternaList: state.truckData.cisternaList!
         },
         cliente: {
           nombre: state.clientData.nombre,
@@ -88,8 +88,8 @@ const CreatingNewOrder = () => {
         })
       }, 5000)
     } catch (e) {
+      console.log('Error:', e.response.data.message)
       dispatch({ type: ActionType.CloseModal })
-      dispatchNewOrder({ type: NewOrderActionType.ClearNewOrderData })
 
       setTimeout(() => {
         dispatch({
@@ -105,7 +105,7 @@ const CreatingNewOrder = () => {
           type: NewOrderActionType.UpdateCreatingNewOrderState,
           payload: {
             btnCreateOrderClickHandler: undefined,
-            creatingNewOrder: false
+            creatingNewOrder: true
           }
         })
       }, 500)

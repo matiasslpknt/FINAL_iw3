@@ -12,6 +12,7 @@ const useStyles = makeStyles(() =>
     },
     sectionTitle: {
       display: 'flex',
+      justifyContent: 'space-between',
       alignItems: 'center',
       padding: '0 2rem',
       height: '90px'
@@ -40,7 +41,6 @@ const useStyles = makeStyles(() =>
       padding: '8px',
       width: '30px',
       height: '30px',
-      margin: 'auto',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center'
@@ -58,7 +58,7 @@ const useStyles = makeStyles(() =>
         boxShadow: 'none'
       }
     },
-    loadingSm: { height: '100%', margin: '0 1rem' }
+    loadingSm: { margin: '12px 18px' }
   })
 )
 

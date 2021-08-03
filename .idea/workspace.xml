@@ -4,23 +4,76 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="606b90ad-575a-4bcf-a5f7-88039e7f82de" name="Default Changelist" comment="modificacion para jenkins">
+    <list default="true" id="4df09ddd-c385-4cac-9728-726298f7eec6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cargar_usuarios.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-config/spring/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iw3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/iw3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/iua/business/OrdenBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/iua/business/OrdenBusiness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/iua/model/Orden.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/iua/model/Orden.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ar/edu/iua/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/iua/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/api/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/api/order/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/api/order/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/api/order/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/api/order/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/api/product/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/api/product/routes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/api/truck/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/api/truck/routes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/components/loading/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/loading/Loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/components/loading/LoadingStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/loading/LoadingStyles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/components/main-drawer/MainDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/main-drawer/MainDrawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/creating-new-order/CreatingNewOrder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/creating-new-order/CreatingNewOrder.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/final-weighing/FinalWeighing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/modal-body/final-weighing/FinalWeighing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/components/stepper-horizontal/StepperHorizontal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/components/stepper-horizontal/StepperHorizontal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/config/router/LoggedUserRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/config/router/LoggedUserRouter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/config/router/PrivateRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/config/router/PrivateRoute.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/config/router/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/config/router/router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/config/router/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/config/router/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/context/new-order/reducer/new-order-state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/context/new-order/reducer/new-order-state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/context/ui/reducer/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/context/ui/reducer/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/context/ui/reducer/ui-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/context/ui/reducer/ui-actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/context/ui/reducer/ui-state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/context/ui/reducer/ui-state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/hooks/useLoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/hooks/useLoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/model/Camion.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/model/Camion.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/model/Cisterna.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/model/Cisterna.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/model/Orden.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/model/Orden.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/model/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/model/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/service/orderService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/service/orderService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/service/productService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/service/truckService.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/utils/config-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/utils/config-utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/utils/function-utils.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/views/main-wrapper/MainWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/main-wrapper/MainWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/NewOrder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/NewOrder.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/NewOrderStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/NewOrderStyles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/new-order-basic-data/NewOrderBasicData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/new-order-basic-data/NewOrderBasicData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/new-order-client-data/NewOrderClientData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/new-order-client-data/NewOrderClientData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/new-order-detail-data/NewOrderDetailData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/new-order-detail-data/NewOrderDetailData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/new-order-product-data/NewOrderProductData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/new-order-product-data/NewOrderProductData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/new-order-truck-data/NewOrderTruckData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/new-order/new-order-truck-data/NewOrderTruckData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/views/orders/order-detail/OrderDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/orders/order-detail/OrderDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/views/orders/order-list/OrderList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/orders/order-list/OrderList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/src/views/orders/order-list/OrderListStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/src/views/orders/order-list/OrderListStyles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/startup_script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/startup_script.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
-    <execution />
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="addingFront" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -31,35 +84,33 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProjectId" id="1vm4Zuuiy8QmPJtg0iGFU5AAtjM" />
+  <component name="ProjectId" id="1wDZ8T2HBRnXBL4alFzKmntA9Pp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/src/main/resources/static/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ar.edu.iua.model.persistence" />
-      <recent name="ar.edu.iua.rest" />
-      <recent name="ar.edu.iua.business" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docker-config/spring" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -75,34 +126,14 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="606b90ad-575a-4bcf-a5f7-88039e7f82de" name="Default Changelist" comment="" />
-      <created>1627153990149</created>
+      <changelist id="4df09ddd-c385-4cac-9728-726298f7eec6" name="Default Changelist" comment="" />
+      <created>1627994963112</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1627153990149</updated>
-      <workItem from="1627153991921" duration="848000" />
-      <workItem from="1627157909474" duration="438000" />
-      <workItem from="1627848218247" duration="836000" />
-      <workItem from="1627863034373" duration="160000" />
-      <workItem from="1627863300025" duration="85000" />
-      <workItem from="1627918433688" duration="2980000" />
-      <workItem from="1627928018009" duration="404000" />
+      <updated>1627994963112</updated>
+      <workItem from="1627994965961" duration="1952000" />
+      <workItem from="1627999538972" duration="885000" />
     </task>
-    <task id="LOCAL-00001" summary="se soluciona problema de cisternas">
-      <created>1627919960101</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1627919960101</updated>
-    </task>
-    <task id="LOCAL-00002" summary="modificacion para jenkins">
-      <created>1627928338239</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1627928338239</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,16 +144,23 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="text">
+                    <value>
+                      <list>
+                        <option value="cucumber" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="se soluciona problema de cisternas" />
-    <MESSAGE value="modificacion para jenkins" />
-    <option name="LAST_COMMIT_MESSAGE" value="modificacion para jenkins" />
   </component>
 </project>
